@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "AssignRollToUsers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style type="text/css">.col-mid-2 { }</style>
+
+<h2>AssignRollToUsers</h2>
+@using (Html.BeginForm())
+{
+    <div class="form-group">
+        @Html.Label("Select your user type", new {@class = "col-mid-2 control-label"})
+        <div class="col-mid-10">
+            @Html.DropDownList("User Name")
+        </div>
+    </div>
+    <input type="submit" value="Create Roll"/>
+}
+

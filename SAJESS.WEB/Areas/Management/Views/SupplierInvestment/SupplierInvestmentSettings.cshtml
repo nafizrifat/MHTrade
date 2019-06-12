@@ -1,0 +1,94 @@
+﻿
+<script src="~/Areas/Management/Scripts/SupplierInvestment/SupplierInvestmentSettings.js"></script>
+@{
+    ViewBag.Title = "SupplierInvestmentSettings";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en-us">
+
+<body class="">
+
+    <!-- MAIN PANEL -->
+    @*id="main"*@
+    <div role="main">
+
+        <!-- RIBBON -->
+        <div id="ribbon">
+
+            <span class="ribbon-button-alignment">
+                <span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh" rel="tooltip" data-placement="bottom" data-original-title="
+                    <i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings." data-html="true">
+                    <i class="fa fa-refresh"></i>
+                </span>
+            </span>
+
+            <!-- breadcrumb -->
+            <ol class="breadcrumb">
+                <li>Supplier</li>
+                <li>Investment</li>
+                <li>Entry</li>
+            </ol>
+        </div>
+        <!-- END RIBBON -->
+        <!-- MAIN CONTENT -->
+        <div id="content">
+            <!-- widget grid -->
+            <section id="widget-grid" class="">
+                <!-- START ROW -->
+                <div class="row">
+                    <!-- NEW COL START -->
+                    <article class="col-sm-12 col-md-12 col-lg-12">
+                        @Html.Partial("_CreateSupplierInvestment")
+                   
+                    </article>
+                    <article class="col-sm-12 col-md-12 col-lg-12">
+                        @Html.Partial("_ViewSupplierInvestment")
+                    </article>
+                </div>
+                <!-- END ROW -->
+                <!-- NEW ROW -->
+
+                <div class="row">
+                </div>
+
+                <!-- END ROW-->
+
+            </section>
+            <!-- end widget grid -->
+
+
+        </div>
+        <!-- END MAIN CONTENT -->
+
+    </div>
+    <!-- END MAIN PANEL -->
+    <div id="popup" title="SAJESS Automation 1.0.0">
+
+            @Html.Partial("~/Areas/Management/Views/Supplier/_CreateSuppliers.cshtml")
+
+
+        </div>
+
+    @*<div id="popup" title="SAJESS Automation 1.0.0">
+            @Html.Partial("~/Areas/HR/Views/AssetCategory/_CreateAssetCategory.cshtml")
+        </div>*@
+
+    <script type="text/javascript">
+
+        // DO NOT REMOVE : GLOBAL FUNCTIONS!
+
+        $(document).ready(function () {
+
+            pageSetUp();
+
+        })
+
+    </script>
+
+    <!-- Your GOOGLE ANALYTICS CODE Below -->
+
+
+</body>
+
+</html>

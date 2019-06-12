@@ -1,0 +1,224 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AccountingModels.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AcctAccountLedgers">
+          <Key>
+            <PropertyRef Name="LedgerId" />
+          </Key>
+          <Property Name="LedgerId" Type="bigint" Nullable="false" />
+          <Property Name="LedgerManualId" Type="bigint" />
+          <Property Name="LedgerName" Type="varchar" MaxLength="250" />
+          <Property Name="LedgerGroupId" Type="bigint" />
+          <Property Name="OpeningBalance" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="IsMaster" Type="int" />
+          <Property Name="Ex1" Type="varchar" MaxLength="250" />
+          <Property Name="Note" Type="text" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="NotDeletable" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreateId" Type="int" />
+          <Property Name="UpdateId" Type="int" />
+        </EntityType>
+        <EntityType Name="AcctJournals">
+          <Key>
+            <PropertyRef Name="JournalId" />
+          </Key>
+          <Property Name="JournalId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LedgerId" Type="bigint" Nullable="false" />
+          <Property Name="TransactionDate" Type="date" Nullable="false" />
+          <Property Name="TransactionId" Type="bigint" Nullable="false" />
+          <Property Name="ChequeNo" Type="varchar" MaxLength="250" />
+          <Property Name="TransactionType" Type="varchar" MaxLength="250" />
+          <Property Name="PaymentMethod" Type="varchar" MaxLength="250" />
+          <Property Name="BankAccount" Type="varchar" MaxLength="250" />
+          <Property Name="DebitAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="CreditAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Particulars" Type="text" />
+          <Property Name="ChequeDate" Type="datetime" />
+          <Property Name="Ex1" Type="varchar" MaxLength="250" />
+          <Property Name="Ex2" Type="varchar" MaxLength="250" />
+          <Property Name="Note" Type="text" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="NotDeletable" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <Association Name="FK_AcctJournals_AcctJournals">
+          <End Role="AcctAccountLedgers" Type="Self.AcctAccountLedgers" Multiplicity="1" />
+          <End Role="AcctJournals" Type="Self.AcctJournals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AcctAccountLedgers">
+              <PropertyRef Name="LedgerId" />
+            </Principal>
+            <Dependent Role="AcctJournals">
+              <PropertyRef Name="LedgerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AccountingModelsStoreContainer">
+          <EntitySet Name="AcctAccountLedgers" EntityType="Self.AcctAccountLedgers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AcctJournals" EntityType="Self.AcctJournals" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AcctJournals_AcctJournals" Association="Self.FK_AcctJournals_AcctJournals">
+            <End Role="AcctAccountLedgers" EntitySet="AcctAccountLedgers" />
+            <End Role="AcctJournals" EntitySet="AcctJournals" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AccountingModels" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AcctAccountLedger">
+          <Key>
+            <PropertyRef Name="LedgerId" />
+          </Key>
+          <Property Name="LedgerId" Type="Int64" Nullable="false" />
+          <Property Name="LedgerManualId" Type="Int64" />
+          <Property Name="LedgerName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="LedgerGroupId" Type="Int64" />
+          <Property Name="OpeningBalance" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="IsMaster" Type="Int32" />
+          <Property Name="Ex1" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="NotDeletable" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreateId" Type="Int32" />
+          <Property Name="UpdateId" Type="Int32" />
+          <NavigationProperty Name="AcctJournals" Relationship="Self.FK_AcctJournals_AcctJournals" FromRole="AcctAccountLedgers" ToRole="AcctJournals" />
+        </EntityType>
+        <EntityType Name="AcctJournal">
+          <Key>
+            <PropertyRef Name="JournalId" />
+          </Key>
+          <Property Name="JournalId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LedgerId" Type="Int64" Nullable="false" />
+          <Property Name="TransactionDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="TransactionId" Type="Int64" Nullable="false" />
+          <Property Name="ChequeNo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="TransactionType" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="PaymentMethod" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="BankAccount" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="DebitAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="CreditAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Particulars" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ChequeDate" Type="DateTime" Precision="3" />
+          <Property Name="Ex1" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Ex2" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="NotDeletable" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AcctAccountLedger" Relationship="Self.FK_AcctJournals_AcctJournals" FromRole="AcctJournals" ToRole="AcctAccountLedgers" />
+        </EntityType>
+        <Association Name="FK_AcctJournals_AcctJournals">
+          <End Role="AcctAccountLedgers" Type="Self.AcctAccountLedger" Multiplicity="1" />
+          <End Role="AcctJournals" Type="Self.AcctJournal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AcctAccountLedgers">
+              <PropertyRef Name="LedgerId" />
+            </Principal>
+            <Dependent Role="AcctJournals">
+              <PropertyRef Name="LedgerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MarketManagementAccountingEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AcctAccountLedgers" EntityType="Self.AcctAccountLedger" />
+          <EntitySet Name="AcctJournals" EntityType="Self.AcctJournal" />
+          <AssociationSet Name="FK_AcctJournals_AcctJournals" Association="Self.FK_AcctJournals_AcctJournals">
+            <End Role="AcctAccountLedgers" EntitySet="AcctAccountLedgers" />
+            <End Role="AcctJournals" EntitySet="AcctJournals" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AccountingModelsStoreContainer" CdmEntityContainer="MarketManagementAccountingEntities">
+          <EntitySetMapping Name="AcctAccountLedgers">
+            <EntityTypeMapping TypeName="AccountingModels.AcctAccountLedger">
+              <MappingFragment StoreEntitySet="AcctAccountLedgers">
+                <ScalarProperty Name="LedgerId" ColumnName="LedgerId" />
+                <ScalarProperty Name="LedgerManualId" ColumnName="LedgerManualId" />
+                <ScalarProperty Name="LedgerName" ColumnName="LedgerName" />
+                <ScalarProperty Name="LedgerGroupId" ColumnName="LedgerGroupId" />
+                <ScalarProperty Name="OpeningBalance" ColumnName="OpeningBalance" />
+                <ScalarProperty Name="IsMaster" ColumnName="IsMaster" />
+                <ScalarProperty Name="Ex1" ColumnName="Ex1" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="NotDeletable" ColumnName="NotDeletable" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreateId" ColumnName="CreateId" />
+                <ScalarProperty Name="UpdateId" ColumnName="UpdateId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AcctJournals">
+            <EntityTypeMapping TypeName="AccountingModels.AcctJournal">
+              <MappingFragment StoreEntitySet="AcctJournals">
+                <ScalarProperty Name="JournalId" ColumnName="JournalId" />
+                <ScalarProperty Name="LedgerId" ColumnName="LedgerId" />
+                <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
+                <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
+                <ScalarProperty Name="ChequeNo" ColumnName="ChequeNo" />
+                <ScalarProperty Name="TransactionType" ColumnName="TransactionType" />
+                <ScalarProperty Name="PaymentMethod" ColumnName="PaymentMethod" />
+                <ScalarProperty Name="BankAccount" ColumnName="BankAccount" />
+                <ScalarProperty Name="DebitAmount" ColumnName="DebitAmount" />
+                <ScalarProperty Name="CreditAmount" ColumnName="CreditAmount" />
+                <ScalarProperty Name="Particulars" ColumnName="Particulars" />
+                <ScalarProperty Name="ChequeDate" ColumnName="ChequeDate" />
+                <ScalarProperty Name="Ex1" ColumnName="Ex1" />
+                <ScalarProperty Name="Ex2" ColumnName="Ex2" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="NotDeletable" ColumnName="NotDeletable" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

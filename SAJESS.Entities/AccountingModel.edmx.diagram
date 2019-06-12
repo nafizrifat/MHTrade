@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="15aed2e96aac4661a61ff9cc41024d1a" Name="Diagram1" ZoomLevel="89">
+        <EntityTypeShape EntityType="AccountingModels.AcctAccountLedger" Width="1.5" PointX="2.625" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AccountingModels.AcctJournal" Width="1.5" PointX="7.375" PointY="1.875" IsExpanded="true" />
+        <AssociationConnector Association="AccountingModels.FK_AcctJournals_AcctJournals" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAJESS.Entities", "SAJESS.Entities\SAJESS.Entities.csproj", "{F63BE41A-4427-4B3E-A289-A7D7EE069163}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAJESS.Manager", "SAJESS.Manager\SAJESS.Manager.csproj", "{B2BA3C80-24D8-49CF-865F-EDE43A2EBDB7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAJESS.Repositories", "SAJESS.Repositories\SAJESS.Repositories.csproj", "{9C784592-1864-462A-A648-72450F1238B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAJESS.WEB", "SAJESS.WEB\SAJESS.WEB.csproj", "{B26824AC-1DD1-4CED-A2EF-BA2CE3C75C74}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F63BE41A-4427-4B3E-A289-A7D7EE069163}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F63BE41A-4427-4B3E-A289-A7D7EE069163}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F63BE41A-4427-4B3E-A289-A7D7EE069163}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F63BE41A-4427-4B3E-A289-A7D7EE069163}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2BA3C80-24D8-49CF-865F-EDE43A2EBDB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2BA3C80-24D8-49CF-865F-EDE43A2EBDB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2BA3C80-24D8-49CF-865F-EDE43A2EBDB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2BA3C80-24D8-49CF-865F-EDE43A2EBDB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C784592-1864-462A-A648-72450F1238B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C784592-1864-462A-A648-72450F1238B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C784592-1864-462A-A648-72450F1238B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C784592-1864-462A-A648-72450F1238B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B26824AC-1DD1-4CED-A2EF-BA2CE3C75C74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B26824AC-1DD1-4CED-A2EF-BA2CE3C75C74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B26824AC-1DD1-4CED-A2EF-BA2CE3C75C74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B26824AC-1DD1-4CED-A2EF-BA2CE3C75C74}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

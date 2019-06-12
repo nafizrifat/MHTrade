@@ -1,0 +1,55 @@
+﻿<script src="~/Content/Utility/datetimepicker.js"></script>
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="jarviswidget" id="wid-id-createAsset" data-widget-editbutton="false" data-widget-custombutton="false">
+        <header>
+
+            <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+            <h2>Cash Receieve Statement</h2>
+
+        </header>
+        <!-- widget div-->
+        <div>
+            <div class="widget-body no-padding">
+                <div class="smart-form">
+                    <fieldset>
+                        <table>
+                            <tr>
+
+                                <td>
+
+                                    <label>From Date</label>
+                                    <br />
+                                    <input type="datetime" id="fromDate" class="datepicker" />
+
+                                </td>
+
+                                <td>
+
+                                    <label>To Date</label>
+                                    <br/>
+                                    <input type="datetime" id="toDate" class="datepicker"/>
+
+                                </td>
+                                <td><input type="button" id="btnSearch" value="Search" /></td>
+                                <td>
+                                    <br/><input type="button" id="btnReset" value="Reset Date"/>
+                                </td>
+                            </tr>
+                        </table>
+                        <table class="table-condensed" id="cashReceiveStatement">
+                            <thead thead-inverse>
+                                <tr>
+                                    <th>A/C Head</th>
+                                    <th>Debit Amount</th>
+                                    <th>Credit Amopunt</th>
+                                </tr>
+                            </thead>
+                        </table>
+
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,137 @@
+﻿
+<script src="~/Content/Utility/datetimepicker.js"></script>
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="jarviswidget" id="wid-id-createAsset" data-widget-editbutton="false" data-widget-custombutton="false">
+        <header>
+
+            <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+            <h2>Cash/Bank Receive</h2>
+
+        </header>
+        <!-- widget div-->
+        <div>
+            <div class="widget-body no-padding">
+                <div class="smart-form">
+                    <fieldset>
+                        <input type="text" id="hdnA_GlAccountId" hidden="" value="0" />
+                        <section id="selectAccountGroup">
+                            <table class="table-condensed" id="addCreditBillItem">
+                                <thead thead-inverse>
+                                    <tr>
+                                        <th>Cash/Bank</th>
+                                        <th>Particulars</th>
+                                        <th>Voucher No#</th>
+                                        <th>A/C Head</th>
+                                        <th>Transactin Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tBody">
+                                    <tr>
+                                        <td hidden>
+                                            <input class="form-inline" type="text" name="hdnName" id="hdnName">
+                                        </td>
+                                        <td>
+                                            <label class="form-inline">
+                                                <select id="cmbCashOrBank">
+                                                    <option></option>
+                                                </select>
+                                            </label>
+
+                                        </td>
+                                        <td>
+                                            <input class="form-group" type="text" id="txtParticularsCB" name="txtParticularsCB"  readonly="readonly">
+                                        </td>
+                                        <td>
+                                            <input class="form-inline" type="text" id="txtvoucherNoCB" name="txtvoucherNoCB" />
+                                        </td>
+                                        <td>
+                                            <label class="form-inline">
+                                                <select id="cmbachead">
+                                                    <option></option>
+                                                </select>
+                                            </label>
+                                        </td>
+                                        <td>
+                                            <input type="datetime" id="dtpTransactionDate" name="TransactionDate" class="datepicker" maxlength="50" placeholder="Date" required />
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </section>
+
+                        <section>
+                            @*<div class="smart-form">*@
+                            <table class="table-condensed">
+                                <thead thead-inverse>
+                                    <tr>
+                                        <th>Cash/Bank</th>
+                                        <th>A/C Head</th>
+                                        <th>Particulars</th>
+                                        <th>Amount</th>
+                                        <th>Cheque No #</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input type="text"  class="form-inline" id="txtcashorbank"  readonly="readonly" size="10" style="background-color: lightblue;color: red"/>
+                                        </td>
+                                        <td>
+                                            <label class="form-inline">
+                                                <select id="cmbA_GlAccount">
+                                                    <option></option>
+                                                </select>
+                                            </label>
+                                        </td>
+                                        <td>
+                                            <input class="form-group" type="text" id="txtParticulars" name="txtParticulars">
+                                        </td>
+                                        <td>
+                                            <input type="number" id="nbramount" placeholder="Amount" />
+                                        </td>
+                                        <td>
+                                            <input type="text" id="txtchequeNo" name="txtvoucherNo" />
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-success" id="btnAdd">Add New</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                            </table>
+
+                        </section>
+                        <div class="form-group">
+                            <table class="table table-striped col-md-12" id="tbodyCBRecPay">
+                                <thead class="thead-inverse">
+                                    <tr>
+                                        <th style="display: none">Sl.</th>
+                                        <th>A/C Head</th>
+                                        <th>Code</th>
+                                        <th>Particulars</th>
+                                        <th>Amount</th>
+                                        <th>Transactin Date</th>
+                                        <th>Cheque No#</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbodycrdamntid3">
+                                    <tr></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </fieldset>
+                    <footer>
+                        <button class="btn btn-primary" id="btnSaveTransactionData">
+                            Save
+                        </button>
+                        <button type="button" class="btn btn-default" id="btnClearData">
+                            Clear
+                        </button>
+                    </footer>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

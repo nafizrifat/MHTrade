@@ -1,0 +1,121 @@
+﻿<script src="~/Areas/Management/Scripts/SupplierInvestment/CreateReviseSupplierInvestment.js"></script>
+<div id="saveAssetModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">SJ Management</h4>
+            </div>
+            <div id="modal-body">
+                <div class="col-md-1"> </div> <div class="col-md-11">  <h2 id="rif"></h2></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="jarviswidget" id="wid-id-createAsset" data-widget-editbutton="false" data-widget-custombutton="false">
+    <header>
+        <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+        <h2> Reverse Investment Entry</h2>
+    </header>
+    <!-- widget div-->
+    <div>
+        <!-- widget content -->
+        <div class="widget-body no-padding">
+            <div class="smart-form">
+                <fieldset>
+                    <input type="text" id="hdnSupplierInvestmentIdRevise" hidden="" value="null" />
+                    <section class="col-md-12">
+                        <div class="col-md-3">
+                            <label for="cmbSupplierIdRevise" class="label">
+                                Select Supplier:
+                            </label>
+                            <div class="col-md-12">
+                                <label class="select">
+                                    <select id="cmbSupplierIdRevise">
+                                        <option></option>
+                                    </select>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-1"> </div>
+                        <div class="col-md-3">
+                            <label for="txtReasonRevise" class="label">Reason:</label>
+                            <label class="input">
+                                <i class="icon-append fa fa-question-circle"></i>
+                                <input type="text" id="txtReasonRevise" name="txtReasonRevise" placeholder="Rreason" />
+                                <b class="tooltip tooltip-bottom-right">
+                                    <i class="fa fa-warning txt-color-teal"></i>
+                                    প্রদানের কারন উল্লেখ করুন।
+                                    Please enter the reason for investment.
+                                </b>
+                            </label>
+                        </div>
+                        <div class="col-md-1"> </div>
+                        <section class="col-sm-3 col-md-3 col-lg-3">
+                            @*<label style="text-align: center; font-size: 20px;" class="col-xs-4 col-lg-4 control-label">Amount :</label>*@
+                            <label for="txtAmount" class="label">Amount</label>
+                            <div class="input-group col-sm-12 col-md-12 col-lg-9">
+                                <label class="input">
+                                    <input type="number" id="txtAmountRevise" name="txtAmountRevise" placeholder="Amount" />
+                                </label>
+                                <span class="input-group-addon">৳</span>
+                            </div>
+
+                        </section>
+                    </section>
+                    <section class="col-md-12">
+                        <div class="col-md-3">
+                            <label for="txtMemberNameRevise" class="label">Passenger Name:</label>
+                            <label class="input">
+                                <i class="icon-append fa fa-question-circle"></i>
+                                <input type="text" id="txtMemberNameRevise" name="txtMemberNameRevise" placeholder="Passenger Name" />
+                                <b class="tooltip tooltip-bottom-right">
+                                    <i class="fa fa-warning txt-color-teal"></i>
+                                    সদস্যের নাম। (ঐচ্ছিক)
+                                    Name of the Passenger.(optional)
+                                </b>
+                            </label>
+                        </div>
+                        <div class="col-md-1"> </div>
+                        <div class="col-md-3">
+                            <label for="txtMemberNidRevise" class="label">Member Nid/Phone:</label>
+                            <label class="input">
+                                <i class="icon-append fa fa-question-circle"></i>
+                                <input type="text" id="txtMemberNidRevise" name="txtMemberNidRevise" placeholder="Member Nid/Phone" maxlength="18" />
+                                <b class="tooltip tooltip-bottom-right">
+                                    <i class="fa fa-warning txt-color-teal"></i>
+                                    সদস্যের পরিচয় ক্রমিক। (ঐচ্ছিক)
+                                    Member's national Id /Phone.(optional)
+                                </b>
+                            </label>
+                        </div>
+                        <div class="col-md-1"> </div>
+                        <div class="col-md-3">
+                            <label for="dtTransactionDateRevise" class="label">Transaction Date</label>
+                            @*   <input type="text" id="dtTransactionDate" name="TransactionDate" class="datepicker" maxlength="50" placeholder="Transaction Date" required/>*@
+                            <label class="input">
+                                <i class="icon-append fa fa-calendar"></i>
+                                <input type="text" name="TransactionDateRevise" id="dtTransactionDateRevise" placeholder="Expected start date">
+                            </label>
+                        </div>
+                    </section>
+                </fieldset>
+                <footer>
+                    <button class="btn btn-danger" style="display: @ViewBag.DeleteButtonDisplay; " id="btnInvestmentDelete">Delete</button>
+
+                    <button class="btn btn-primary" id="btnReviseSupplierInvestment">Save</button>
+                    <button type="button" class="btn btn-default" id="btnReviseSupplierInvestmentClear">Clear</button>
+
+                </footer>
+            </div>
+
+        </div>
+        <!-- end widget content -->
+    </div>
+    <!-- end widget div -->
+</div>
+<!-- end widget -->

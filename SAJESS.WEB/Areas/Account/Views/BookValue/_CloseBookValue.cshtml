@@ -1,0 +1,63 @@
+﻿<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="jarviswidget" id="wid-id-1" data-widget-editbutton="false" data-widget-custombutton="false">
+    <header>
+        <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+        <h2> Book Close </h2>
+
+    </header>
+
+    <!-- widget div-->
+    <div>
+
+        <div class="widget-body no-padding">
+            <div class="smart-form">
+                <fieldset>
+                    <section>
+                        <label for="cmbFYId" class="label col-lg-4">
+                           Fiscal Year&nbsp;
+
+                            <select id="cmbFiscalYear col-lg-8">
+                                <option></option>@*Load Fiscal year from Table*@
+                            </select>
+
+                        </label>
+                    </section>
+                    <section>
+
+                        <button class="btn btn-primary col-lg-4" id="btnSaveBrand">Get Year&nbsp;&nbsp;&nbsp;</button>
+
+                        <label class="select col-lg-8">
+                            <input type="text" id="txtBrandName" name="txtBrandName" placeholder="YYYY-to-YYYY" required />
+                        </label>
+                    </section>
+                  
+                </fieldset>
+
+                <footer>
+                    <button class="btn btn-primary" id="btnSaveBrand">
+                        Close Book
+                    </button>
+
+                </footer>
+            </div>
+
+        </div>
+        <!-- end widget content -->
+
+    </div>
+    <!-- end widget div -->
+
+</div>
+<!-- end widget -->
+

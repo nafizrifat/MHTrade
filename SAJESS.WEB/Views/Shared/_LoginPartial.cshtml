@@ -1,0 +1,33 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Identity", new { Area = "" }, FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+    @Html.AntiForgeryToken()
+        <ul class="nav navbar-nav navbar-right ">
+            <li style="visibility: hidden">
+            @Html.ActionLink("Register", "Register", "Identity", routeValues: new {Area = ""}, htmlAttributes: new {id = "registerLink"})
+            <li/>
+            <li style="visibility: hidden">
+                @Html.ActionLink("Role Assign", "RegisterRole", "Identity", routeValues: new { Area = "" }, htmlAttributes: new { title = "Manage" })
+            </li>
+
+            <li style="visibility: hidden">
+                @Html.ActionLink("Role Manager", "Index", "Roles", routeValues: new {Area = ""}, htmlAttributes: new {title = "Manage"})
+            </li>
+            
+            <li>
+                @Html.ActionLink("You are logged in as  " + User.Identity.GetUserName() + "! want change PASSWORD?", "Manage", "Identity", routeValues: new { Area = "" }, htmlAttributes: new { title = "Manage", @style = "font-weight:bold;" })
+            </li>
+            <li style="margin-right: 2.5em"><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+        </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        
+       
+        <li>@Html.ActionLink("Log in", "Login", "Identity", routeValues: new {Area = ""}, htmlAttributes: new {id = "loginLink"})</li>
+    </ul>
+}

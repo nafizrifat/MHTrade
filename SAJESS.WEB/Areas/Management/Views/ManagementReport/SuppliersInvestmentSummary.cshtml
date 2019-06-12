@@ -1,0 +1,176 @@
+﻿<script src="~/Areas/Management/Scripts/ManagementReport/SuppliersInvestmentSummary.js"></script>
+@{
+    ViewBag.Title = "SuppliersInvestmentSummary";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!DOCTYPE html>
+<html lang="en-us">
+
+
+<body class="">
+    <div id="saveAssetModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">SJ Management</h4>
+                </div>
+                <div id="modal-body">
+                    <div class="col-md-1"> </div> <div class="col-md-11">  <h2 id="rif"></h2></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- MAIN PANEL -->
+    @*id="main"*@
+    <div role="main">
+
+        <!-- RIBBON -->
+        <div id="ribbon">
+
+            <span class="ribbon-button-alignment">
+                <span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh" rel="tooltip" data-placement="bottom" data-original-title="
+                    <i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings." data-html="true">
+                    <i class="fa fa-refresh"></i>
+                </span>
+            </span>
+
+            <!-- breadcrumb -->
+            <ol class="breadcrumb">
+                <li>Supplier</li>
+                <li>Investment</li>
+                <li>Entry</li>
+            </ol>
+        </div>
+        <!-- END RIBBON -->
+        <!-- MAIN CONTENT -->
+        <div id="content">
+            <!-- widget grid -->
+            <section id="widget-grid" class="">
+                <!-- START ROW -->
+                <div class="row">
+                    <!-- NEW COL START -->
+                    <article class="col-sm-12 col-md-12 col-lg-12">
+
+                        <div class="jarviswidget" id="wid-id-createAsset" data-widget-editbutton="false" data-widget-custombutton="false">
+                            <header>
+                                <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+                                <h2>Investment Entry</h2>
+                            </header>
+                            <!-- widget div-->
+                            <div>
+                                <!-- widget content -->
+                                <div class="widget-body no-padding">
+                                    <div class="smart-form">
+                                        <fieldset>
+                                            <input type="text" id="hdnSupplierInvestmentId" hidden="" value="0" />
+                                            <input type="text" id="hdnA_GlTransactionId" hidden="" value="0" />
+                                            <section class="col-md-12">
+                                                <div class="col-md-3">
+                                                    <label for="cmbSupplierId" class="label">
+                                                        @*<button class="btn-sm btn btn-primary" id="btnAddNewSupplier"><span class="glyphicon glyphicon-plus"></span> </button>*@
+                                                        Select Supplier:
+                                                    </label>
+                                                    <div class="col-md-12">
+                                                        <label class="select">
+                                                            <select id="cmbSupplierId">
+                                                                <option></option>
+                                                            </select>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-1"> </div>
+                                                <div class="col-md-1">
+                                                    <label for="cmbSupplierId" class="label">
+                                                        @*<button class="btn-sm btn btn-primary" id="btnAddNewSupplier"><span class="glyphicon glyphicon-plus"></span> </button>*@
+                                                        All Date:
+                                                    </label>
+                                                    <label class="checkbox">
+                                                        <input type="checkbox" name="chkAllDate" id="chkAllDate">
+                                                        <i></i>
+                                                    </label>
+                                                </div>
+                                          
+                                                <div id="idDateRange">
+                                                    <div class="col-md-3">
+                                                        <label for="dtFromDate" class="label">From Date</label>
+                                                        <label class="input">
+                                                            <i class="icon-append fa fa-calendar"></i>
+                                                            <input type="text" name="dtFromDate" id="dtFromDate" placeholder="From date">
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-md-1"> </div>
+                                                    <div class="col-md-3">
+                                                        <label for="dtToDate" class="label">To Date</label>
+                                                        <label class="input">
+                                                            <i class="icon-append fa fa-calendar"></i>
+                                                            <input type="text" name="dtToDate" id="dtToDate" placeholder="To Date">
+                                                        </label>
+                                                    </div>
+                                                </div>
+</section>
+                                        </fieldset>
+                                        <footer>
+                                            <button class="btn btn-primary" id="btnGetReport">Get Report</button>
+                                            <button type="button" class="btn btn-default" id="btnClear">Clear</button>
+                                        </footer>
+                                    </div>
+
+                                </div>
+                                <!-- end widget content -->
+                            </div>
+                            <!-- end widget div -->
+                        </div>
+                        <!-- end widget -->
+                        <!-- END COL -->
+                    </article>
+                    @*<article class="col-sm-12 col-md-12 col-lg-12">
+                            @Html.Partial("_ViewSupplierInvestment")
+                        </article>*@
+                </div>
+                <!-- END ROW -->
+                <!-- NEW ROW -->
+
+                <div class="row">
+                </div>
+
+                <!-- END ROW-->
+
+            </section>
+            <!-- end widget grid -->
+
+
+        </div>
+        <!-- END MAIN CONTENT -->
+
+    </div>
+    <!-- END MAIN PANEL -->
+
+
+    <script type="text/javascript">
+
+        // DO NOT REMOVE : GLOBAL FUNCTIONS!
+
+        $(document).ready(function () {
+
+            pageSetUp();
+
+        })
+
+    </script>
+
+    <!-- Your GOOGLE ANALYTICS CODE Below -->
+
+
+</body>
+
+</html>
+
+
+

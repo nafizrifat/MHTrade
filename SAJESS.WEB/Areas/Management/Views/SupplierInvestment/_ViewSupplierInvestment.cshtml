@@ -1,0 +1,53 @@
+﻿<script src="~/Areas/Management/Scripts/SupplierInvestment/ViewSupplierInvestment.js"></script>
+<!-- Widget ID (each widget will need unique ID)-->
+<div class="jarviswidget jarviswidget-color-darken" id="wid-id-0" data-widget-editbutton="false">
+
+    <header>
+        <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+        <h2>Investment history </h2>
+    </header>
+    <div>
+        <div class="col-lg-offset-2 col-lg-10">
+            <div class="col-md-3">
+              
+                <label class="input">
+                    <i class="icon-append fa fa-calendar"></i>
+                    <input type="text" name="dtFromDate" id="dtFromDate" placeholder="From date">
+                </label>
+            </div>
+            <div class="col-md-1"> </div>
+            <div class="col-md-3">
+                <label class="input">
+                    <i class="icon-append fa fa-calendar"></i>
+                    <input type="text" name="dtToDate" id="dtToDate" placeholder="To Date">
+                </label>
+            </div>
+            <button class="btn btn-primary" id="btnFilterTable">Filter</button>
+        </div>
+       
+        <!-- widget content -->
+   <table id="myTable" class="table table-bordered table-hover responsive-utilities ">
+            <thead>
+            <tr>
+                <th>SupplierInvestmentId </th>
+                <th>Supplier Id </th>
+                <th>Supplier Name</th>
+                <th>TransactionDate</th>
+                <th>Reason</th>
+                <th style="color: red">Amount</th>
+                <th>Passenger</th>
+                <th>Member NId/Phone</th>
+                <th>Transaction Id</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+        </table>
+        <!-- end widget content -->
+    </div>
+    <!-- end widget div -->
+</div>
+<!-- end widget -->
+
+
+
+

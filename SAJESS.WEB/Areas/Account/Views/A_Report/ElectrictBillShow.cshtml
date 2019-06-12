@@ -1,0 +1,120 @@
+﻿<script src="~/Areas/Account/Scripts/A_Report/ElectrictBillShow.js"></script>
+@{
+
+     ViewBag.Title = "ElectrictBillShow";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en-us">
+
+<body class="">
+    <!-- MAIN PANEL -->
+    @*id="main"*@
+    <div role="main">
+        <!-- RIBBON -->
+        <div id="ribbon">
+            <span class="ribbon-button-alignment">
+                <span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh" rel="tooltip" data-placement="bottom" data-original-title="Warning! This will reset all your widget settings." data-html="true">
+                    @*<i class='text-warning fa fa-warning'></i>*@
+                    <i class="fa fa-refresh"></i>
+                </span>
+            </span>
+            <!-- breadcrumb -->
+        </div>
+        <!-- END RIBBON -->
+        <!-- MAIN CONTENT -->
+        <div id="content">
+
+            <!-- widget grid -->
+            <section id="widget-grid" class="">
+
+                <!-- START ROW -->
+
+                <div class="row">
+
+                    <!-- NEW COL START -->
+                    <article class="col-sm-12 col-md-12 col-lg-12">
+                        <section>
+                            <div class="jarviswidget" id="wid-id-1" data-widget-editbutton="false" data-widget-custombutton="false">
+                                <header>
+                                    <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+                                    <h2>Bill for Electricity</h2>
+                                </header>
+
+                                <!-- widget div-->
+                                <div>
+                                    <!-- end widget edit box -->
+                                    <!-- widget content -->
+                                    <div class="widget-body no-padding">
+
+                                        <div class="smart-form">
+                                            <fieldset>
+                                                <legend>Search Box</legend>
+                                                <div class="container-fluid">
+                                                    <div class="row-lg-12">
+                                                        <div class="col-lg-3 col-md-3">
+                                                            <section>
+                                                                <label for="cmbShopId" class="label">Shop</label>
+                                                                <label class="select">
+                                                                    <select id="cmbShopId">
+                                                                        <option></option>
+                                                                    </select>
+                                                                </label>
+                                                            </section>
+                                                        </div>
+                                                        <div class="col-lg-3 col-md-3">
+                                                            <section>
+                                                                <label for="cmbBillingMonth" class="label">Billing Month</label>
+                                                                <label class="select">
+                                                                    <select id="cmbBillingMonth">
+                                                                        <option></option>
+                                                                    </select>
+                                                                </label>
+                                                            </section>
+                                                        </div>
+                                                        @*<div class="col-lg-1 col-md-1"></div>*@
+                                                        <div class="col-lg-3 col-md-3">
+                                                            <section>
+                                                                <label for="cmbBillingYear" class="label">Billing Year</label>
+                                                                <label class="select">
+                                                                    <select id="cmbBillingYear">
+                                                                        <option></option>
+                                                                    </select>
+                                                                </label>
+                                                            </section>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                            <footer>
+
+                                                <button class="btn btn-primary" id="btnShow">Show Report</button>
+                                            </footer>
+                                        </div>
+                                    </div>
+                                    <!-- end widget content -->
+                                </div>
+                                <!-- end widget div -->
+                            </div>
+                        </section>
+
+                    </article>
+                    <
+                    <!-- END COL -->
+                </div>
+                <!-- END ROW -->
+                <!-- NEW ROW -->
+                <div class="row">
+                </div>
+                <!-- END ROW-->
+            </section>
+            <!-- end widget grid -->
+
+
+        </div>
+        <!-- END MAIN CONTENT -->
+
+    </div>
+  </body>
+
+</html>

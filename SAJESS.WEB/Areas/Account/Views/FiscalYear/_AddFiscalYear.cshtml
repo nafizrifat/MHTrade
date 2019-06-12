@@ -1,0 +1,134 @@
+﻿
+
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">@*APT ERP*@</h4>
+            </div>
+            <div id="modal-body">
+                <h2 id="rif"></h2>
+            </div>
+            <div class="modal-footer">
+                @*<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>*@
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="jarviswidget" id="wid-id-1" data-widget-editbutton="false" data-widget-custombutton="false">
+    <header>
+        <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+        <h2>Create FiscalYear </h2>
+
+    </header>
+
+    <!-- widget div-->
+    <div>
+
+        <!-- widget edit box -->
+        <div class="jarviswidget-editbox">
+            <!-- This area used as dropdown edit box -->
+
+        </div>
+        <!-- end widget edit box -->
+        <!-- widget content -->
+        <div class="widget-body no-padding">
+
+            <div class="smart-form">
+
+
+                <fieldset>
+                    <input type="text" id="hdnBillSlabId" hidden="" value="0" />
+                   
+                    
+                   
+                    <section>
+                        <label for="txtStartDate" class="label col-lg-4 text-align-right">Start</label>
+                        <label class="input col-lg-8">
+                        <input type="datetime" id="txtStartDate" class="datepicker" name="txtStartDate" maxlength="50" placeholder="Start Date" required />
+                        </label>
+                        <label for="txtEndDate" class="label col-lg-4 text-align-right">End</label>
+                        <label class="input col-lg-8">
+                            <input type="datetime" id="txtEndDate" name="txtEndDate" class="datepicker" maxlength="50" placeholder="End Date" required />
+                        </label>
+
+
+
+                    </section>
+
+
+
+
+                    <script type="text/javascript">
+                        $(".datepicker").datepicker({
+                            changeYear: false,
+                            dateFormat: 'MM-dd',
+                        }).focus(function () {
+                            $(".ui-datepicker-year").hide();
+                        });
+
+                        debugger;
+
+                        var date = $('#txtStartDate').val();
+                        date.setDate(date.getDate() + 30);
+                        date.setDate(date.getMonth() + 12);
+                        $('#txtEndDate').val(date);
+
+                    </script>
+
+
+
+
+
+
+
+                    @*<section>
+                            <label for="chkIsActive" class="label">Is Active</label>
+                            <label class="checkbox">
+                                <input type="checkbox" id="chkIsActive" name="IsActive" />
+                            </label>
+
+                        </section>*@
+                    <section>
+                        <label class="checkbox col-lg-4">
+                            <input type="checkbox" name="chkIsActive" id="chkIsActive">
+                            <i></i>IsActive
+
+                        </label>
+
+                    </section>
+                </fieldset>
+
+
+
+                <footer>
+                    <button class="btn btn-primary" id="btnSaveBillSlab">
+                        @*onclick="createAssetCategoryManager.SaveAssetCategory()"*@
+                        Save
+                    </button>
+                    <button type="button" class="btn btn-default" id="btnClearBillSlabForm">
+                        Clear
+                    </button>
+                </footer>
+            </div>
+
+        </div>
+        <!-- end widget content -->
+
+    </div>
+    <!-- end widget div -->
+
+</div>
+<!-- end widget -->
+
+
+<div id="dialog_simple" title="SAJESS Automation 1.0.0">
+    <p>
+    </p>
+</div>

@@ -1,0 +1,140 @@
+﻿<script src="~/Areas/Management/Scripts/SupplierInvestment/ReviseSupplierInvestment.js"></script>
+@{
+    ViewBag.Title = "SupplierInvestmentSettings";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en-us">
+
+<body class="">
+
+    <!-- MAIN PANEL -->
+    @*id="main"*@
+    <div role="main">
+
+        <!-- RIBBON -->
+        <div id="ribbon">
+
+            <span class="ribbon-button-alignment">
+                <span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh" rel="tooltip" data-placement="bottom" data-original-title="
+                    <i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings." data-html="true">
+                    <i class="fa fa-refresh"></i>
+                </span>
+            </span>
+
+            <!-- breadcrumb -->
+            <ol class="breadcrumb">
+                <li>Supplier</li>
+                <li>Investment</li>
+                <li>Entry</li>
+            </ol>
+        </div>
+        <!-- END RIBBON -->
+        <!-- MAIN CONTENT -->
+        <div id="content">
+            <!-- widget grid -->
+            <section id="widget-grid" class="">
+              
+                <!-- START ROW -->
+                <div class="row">
+                    <!-- NEW COL START -->
+                    <article class="col-sm-12 col-md-12 col-lg-12">
+
+                        <div class="jarviswidget" id="wid-id-createAsset" data-widget-editbutton="false" data-widget-custombutton="false">
+                            <header>
+                                <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+                                <h2>Reverse Supplier Investment Entry</h2>
+                            </header>
+                            <!-- widget div-->
+                            <div>
+                                <!-- widget content -->
+                                <div class="widget-body no-padding">
+                                    <div class="smart-form">
+                                        <fieldset>
+                                            <input type="text" id="hdnSupplierInvestmentId" hidden="" value="null"/>
+
+                                            <section class="col-md-12">
+                                                <div class=" col-lg-2"></div>
+                                                    <div class=" col-lg-2">
+                                                        <label for="cmbSearchSupplierId" class="control-label" style="font-weight: bold">
+                                                            Select Supplier for Search:
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-md-3">
+
+                                                        <div class="col-md-12">
+                                                            <label class="select">
+                                                                <select id="cmbSearchSupplierId">
+                                                                    <option></option>
+                                                                </select>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+
+</section>
+                                        </fieldset>
+                                        @*<footer>
+                                            <button class="btn btn-primary" id="btnSaveSupplierInvestment">Save</button>
+                                            <button type="button" class="btn btn-default" id="btnSupplierInvestment">Clear</button>
+                                        </footer>*@
+                                    </div>
+
+                                </div>
+                                <!-- end widget content -->
+                            </div>
+                            <!-- end widget div -->
+                        </div>
+                        <!-- end widget -->
+                    </article>
+                    @*<article class="col-sm-12 col-md-12 col-lg-12">
+                        @Html.Partial("_CreateReviseSupplierInvestment")
+                   
+                    </article>*@
+                    <article class="col-sm-12 col-md-12 col-lg-12">
+                        @Html.Partial("_ViewReviseSupplierInvestment")
+                    </article>
+                </div>
+                <!-- END ROW -->
+                <!-- NEW ROW -->
+
+                <div class="row">
+                </div>
+
+                <!-- END ROW-->
+
+            </section>
+            <!-- end widget grid -->
+
+
+        </div>
+        <!-- END MAIN CONTENT -->
+
+    </div>
+    <!-- END MAIN PANEL -->
+    <div id="popupSupplier" title="SAJESS Automation 1.0.0">
+
+                @Html.Partial("_CreateReviseSupplierInvestment")
+
+
+        </div>
+
+         <script type="text/javascript">
+
+        // DO NOT REMOVE : GLOBAL FUNCTIONS!
+
+        $(document).ready(function () {
+
+            pageSetUp();
+
+        })
+
+    </script>
+
+    <!-- Your GOOGLE ANALYTICS CODE Below -->
+
+
+</body>
+
+</html>
+
+

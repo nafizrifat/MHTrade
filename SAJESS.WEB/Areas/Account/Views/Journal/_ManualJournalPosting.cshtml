@@ -1,0 +1,177 @@
+﻿<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="jarviswidget" id="wid-id-createAsset" data-widget-editbutton="false" data-widget-custombutton="false">
+        <header>
+            <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+            <h2>Journal Entry </h2>
+        </header>
+        <!-- widget div-->
+        <div>
+            <div class="widget-body no-padding">
+                <div class="smart-form">
+                    <fieldset>
+                        <input type="text" id="hdnA_GlAccountId" hidden="" value="0" />
+                        <section id="selectAccountGroup">
+                            <table class="table-condensed" id="addFirstItem">
+
+                                <tbody id="tBody">
+                                    <tr>
+                                        <td hidden>
+                                            <input class="form-inline" type="text" name="hdnName" id="hdnName">
+                                        </td>
+                                        <td>
+                                            <label>A/C Head</label><br />
+                                            @*<input class="form-control" type="text" name="acLedgerName" id="acLedgerName" placeholder="Type account id/head">*@
+                                            <label class="form-inline">
+                                                <select id="cmbA_GlAccount" style="height: 30px; width: 120px;">
+                                                    <option></option>
+                                                </select>
+                                            </label>
+                                        </td>
+
+                                        <td>
+                                            <label>Amount</label><br />
+                                            <input class="form-inline" type="number" name="txtAmount" id="txtAmount">
+                                        </td>
+                                        <td>
+                                            <label>Entry Type</label><br />
+                                            <label class="form-inline">
+                                                <select id="cmbEntryNature" style="width: 120px;">
+                                                    <option value="Debit">Debit</option>
+                                                    <option value="Credit">Credit</option>
+                                                </select>
+                                            </label>
+                                        </td>
+                                        <td>
+                                            <label>Boucher No.</label>
+                                            <br />
+                                            <input type="text" id="txtVoucher" name="txtVoucher" maxlength="50" placeholder="Voucher No." required />
+
+                                        </td>
+                                        <td>
+                                            <label>Transaction Date</label><br />
+                                            <input type="datetime" id="dtpTransactionDate" name="TransactionDate" class="datepicker" maxlength="50" placeholder="Transaction Date" required />
+                                        </td>
+                                        <td>
+                                            <br />
+                                            <button class="btn btn-success" id="btnAddTransection">Add New</button>
+                                        </td>
+                                        
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                        <div id="secondtable">
+                            <section>
+                                <table id="tblsecond">
+                                    <table class="table-condensed" id="addSecondItem">
+                                        <thead>
+                                            <tr>
+                                                <th>A/C Head</th>
+                                                <th>Particulars</th>
+                                                <th>Amounts</th>
+                                                <th>Entry Type</th>
+                                                <th>Transactin Date</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tBody">
+                                            <tr>
+                                                <td hidden>
+                                                    <input class="form-inline" type="text" name="hdnsecondName" id="hdnsecondName">
+                                                </td>
+                                                <td>
+                                                    @*<input class="form-control" type="text" name="acLedgerName" id="acLedgerName" placeholder="Type account id/head">*@
+                                                    <label class="form-inline">
+                                                        <select id="secondcmbA_GlAccount" style="width: 120px;">
+                                                            <option></option>
+                                                        </select>
+                                                    </label>
+                                                </td>
+                                                <td>
+                                                    <input class="form-inline" type="text" name="txtParticulars" id="txtParticulars">
+                                                </td>
+                                                <td>
+                                                    <input class="form-inline" type="number" name="txtsecondAmount" id="txtSecondAmount">
+                                                </td>
+                                                <td>
+                                                    <input class="form-inline" type="text" name="secondEntryNature" id="secondEntryNature">
+                                                </td>
+                                                @*<td>
+                                                        <input type="datetime" id="dtpsecondTransactionDate" name="TransactionDate" class="datepicker" maxlength="50" placeholder="Transaction Date" required />
+                                                    </td>*@
+
+                                                <td>
+                                                    <button class="btn btn-success" id="btnsecondAddTransection">Add New</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                @*<td>
+                                                        <label>Boucher No.</label>
+                                                        <br />
+                                                        <input type="text" id="txtsecondVoucher" name="txtVoucher" maxlength="50" placeholder="Voucher No." required />
+
+                                                    </td>*@
+                                                <td><br /><input id="btncngsecondvoucher" type="button" class="btn btn-success" value="Change Voucher" /></td>
+
+                                                <td>
+                                                    <label>Cheque No.</label>
+                                                    <br />
+                                                    <input type="text" id="txtsecondcheque" name="txtcheque" maxlength="50" placeholder="Cheque No." required />
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </table>
+                            </section>
+                        </div>
+                        <div class="form-group">
+                            <table class="table table-striped col-md-12" id="tNameJournals">
+                                <thead>
+                                    <tr>
+                                        @*<th>Sl.</th>*@
+                                        <th>A/C Head</th>
+                                        <th>Particulars</th>
+                                        <th>Debit</th>
+                                        <th>Credit</th>
+                                        <th>Transaction Date</th>
+                                        <th>VoucharNo./th>
+                                        <th>ChequeNo./th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbodycrdamntid2">
+                                    <tr></tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="form-group">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Total Debit :<strong><input name="totalAmount" id="txtTotalDebit" readonly class="invoice-footer"></strong>  BDT</td>
+                                        <td>Total Credit : <strong><input name="totalAmount" id="txtTotalCredit" readonly class="invoice-footer"></strong> BDT</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </fieldset>
+                    <footer>
+                        <button class="btn btn-primary" id="btnSaveJournal">
+                            Save
+                        </button>
+                        <button type="button" class="btn btn-default" id="btnClearJournal">
+                            Clear
+                        </button>
+                    </footer>
+                </div>
+            </div>
+        </div>
+        <!-- end widget content -->
+
+    </div>
+    <!-- end widget div -->
+
+</div>

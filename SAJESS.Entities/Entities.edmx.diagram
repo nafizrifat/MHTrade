@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ccc2080f2c224f88930dbeeba1d778aa" Name="Diagram1">
+        <EntityTypeShape EntityType="MHTradeModel.A_BookValue" Width="1.5" PointX="15" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="MHTradeModel.A_CostCenter" Width="1.5" PointX="7.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MHTradeModel.A_FiscalYear" Width="1.5" PointX="12.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="MHTradeModel.A_GlAccount" Width="1.5" PointX="9.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="MHTradeModel.A_GlTransaction" Width="1.5" PointX="9.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MHTradeModel.A_GlTransactionDetails" Width="1.5" PointX="12" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MHTradeModel.Address" Width="1.5" PointX="10.5" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MHTradeModel.AspNetRole" Width="1.5" PointX="2.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MHTradeModel.AspNetUserClaim" Width="1.5" PointX="7.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="MHTradeModel.AspNetUserLogin" Width="1.5" PointX="7.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MHTradeModel.AspNetUser" Width="1.5" PointX="5" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="MHTradeModel.CompanyInfo" Width="1.5" PointX="12.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MHTradeModel.DataConfig" Width="1.5" PointX="0.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MHTradeModel.Designation" Width="1.5" PointX="9.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MHTradeModel.District" Width="1.5" PointX="3" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MHTradeModel.Division" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MHTradeModel.Supplier" Width="1.5" PointX="5.25" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="MHTradeModel.SupplierInvestment" Width="1.5" PointX="7.5" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MHTradeModel.Thana" Width="1.5" PointX="5.25" PointY="12.75" IsExpanded="true" />
+        <AssociationConnector Association="MHTradeModel.FK_A_BookValue_A_FiscalYear" ManuallyRouted="false" />
+        <AssociationConnector Association="MHTradeModel.FK_A_GlTransactionDetails_A_GlAccount" ManuallyRouted="false" />
+        <AssociationConnector Association="MHTradeModel.FK_A_GlTransactionDetails_A_GlTransaction" ManuallyRouted="false" />
+        <AssociationConnector Association="MHTradeModel.FK_Address_District" ManuallyRouted="false" />
+        <AssociationConnector Association="MHTradeModel.FK_Address_Division" ManuallyRouted="false" />
+        <AssociationConnector Association="MHTradeModel.FK_Address_Thana" ManuallyRouted="false" />
+        <AssociationConnector Association="MHTradeModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_User_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="MHTradeModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="MHTradeModel.FK_District_Division" ManuallyRouted="false" />
+        <AssociationConnector Association="MHTradeModel.FK_Supplier_District" ManuallyRouted="false" />
+        <AssociationConnector Association="MHTradeModel.FK_Thana_DistrictId" ManuallyRouted="false" />
+        <AssociationConnector Association="MHTradeModel.FK_SupplierInvestment_Supplier" ManuallyRouted="false" />
+        <AssociationConnector Association="MHTradeModel.AspNetUserRoles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

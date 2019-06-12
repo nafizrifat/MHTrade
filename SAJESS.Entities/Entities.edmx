@@ -1,0 +1,1503 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MHTradeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="A_BookValue">
+          <Key>
+            <PropertyRef Name="BookId" />
+          </Key>
+          <Property Name="BookId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FYId" Type="int" Nullable="false" />
+          <Property Name="A_GlAccountId" Type="int" Nullable="false" />
+          <Property Name="OpeningBalance" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="ClosingBalance" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="A_CostCenter">
+          <Key>
+            <PropertyRef Name="CostCenterAutoId" />
+          </Key>
+          <Property Name="CostCenterAutoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="A_CostCenterId" Type="int" Nullable="false" />
+          <Property Name="DebitAccount" Type="int" Nullable="false" />
+          <Property Name="CreditAccount" Type="int" Nullable="false" />
+          <Property Name="CostCenterName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="Particular" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="A_FiscalYear">
+          <Key>
+            <PropertyRef Name="FYId" />
+          </Key>
+          <Property Name="FYId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FiscalYear" Type="nvarchar" MaxLength="9" Nullable="false" />
+          <Property Name="FromDate" Type="datetime" Nullable="false" />
+          <Property Name="ToDate" Type="datetime" Nullable="false" />
+          <Property Name="IsBooked" Type="bit" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" />
+          <Property Name="BookedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="A_GlAccount">
+          <Key>
+            <PropertyRef Name="A_GlAccountId" />
+          </Key>
+          <Property Name="A_GlAccountId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ParentId" Type="int" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TransactionAllowed" Type="bit" Nullable="false" />
+          <Property Name="AccountType" Type="char" MaxLength="1" />
+          <Property Name="BalanceType" Type="char" MaxLength="2" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="UpdatedDate" Type="date" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="A_GlTransaction">
+          <Key>
+            <PropertyRef Name="A_GlTransactionId" />
+          </Key>
+          <Property Name="A_GlTransactionId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TransactionDate" Type="datetime" Nullable="false" />
+          <Property Name="EntryMethod" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+          <Property Name="A_CostCenterId" Type="int" />
+          <Property Name="VoucharNumber" Type="int" />
+        </EntityType>
+        <EntityType Name="A_GlTransactionDetails">
+          <Key>
+            <PropertyRef Name="A_GlTransactionDetailsId" />
+          </Key>
+          <Property Name="A_GlTransactionDetailsId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="A_GlAccountId" Type="int" Nullable="false" />
+          <Property Name="A_GlTransactionId" Type="bigint" Nullable="false" />
+          <Property Name="DebitAmount" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="CreditAmount" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="TransactionDate" Type="datetime" Nullable="false" />
+          <Property Name="ChequeNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="Particular" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="AddressId" />
+          </Key>
+          <Property Name="AddressId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DivisionId" Type="int" Nullable="false" />
+          <Property Name="DistrictId" Type="int" Nullable="false" />
+          <Property Name="ThanaId" Type="int" Nullable="false" />
+          <Property Name="Road" Type="nvarchar" MaxLength="50" />
+          <Property Name="Area" Type="nvarchar" MaxLength="30" />
+          <Property Name="Line1" Type="nvarchar" MaxLength="30" />
+          <Property Name="Line2" Type="nvarchar" MaxLength="30" />
+          <Property Name="Remarks" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+          <Property Name="User_Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar(max)" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="Discriminator" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CompanyInfo">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Name="CompanyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AddressId" Type="int" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="15" />
+          <Property Name="CreationDate" Type="datetime" Nullable="false" />
+          <Property Name="Logo" Type="image" />
+          <Property Name="Slogan" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DataConfig">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Key" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Value" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Designation">
+          <Key>
+            <PropertyRef Name="DesignationId" />
+          </Key>
+          <Property Name="DesignationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Desig_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="District">
+          <Key>
+            <PropertyRef Name="DistrictId" />
+          </Key>
+          <Property Name="DistrictId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DivisionId" Type="int" Nullable="false" />
+          <Property Name="DistrictName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DistrictNameInBangla" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Division">
+          <Key>
+            <PropertyRef Name="DivisionId" />
+          </Key>
+          <Property Name="DivisionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DivisionName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="DivisionNameInBangla" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="SupplierId" />
+          </Key>
+          <Property Name="SupplierId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SupplierName" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="MobileNo" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="DistrictId" Type="int" />
+          <Property Name="Note" Type="varchar" MaxLength="500" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="SupplierInvestment">
+          <Key>
+            <PropertyRef Name="SupplierInvestmentId" />
+          </Key>
+          <Property Name="SupplierInvestmentId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SupplierId" Type="int" Nullable="false" />
+          <Property Name="Reason" Type="varchar" MaxLength="500" />
+          <Property Name="Amount" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="MemberName" Type="varchar" MaxLength="100" />
+          <Property Name="MemberNid" Type="varchar" MaxLength="100" />
+          <Property Name="TransactionDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="128" />
+          <Property Name="A_GlTransactionId" Type="bigint" />
+          <Property Name="ProcessStatus" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDelete" Type="bit" />
+          <Property Name="DeletedDate" Type="datetime" />
+          <Property Name="Particular" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Thana">
+          <Key>
+            <PropertyRef Name="ThanaId" />
+          </Key>
+          <Property Name="ThanaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DistrictId" Type="int" Nullable="false" />
+          <Property Name="ThanaName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ThanaNameInBangla" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <Association Name="FK_A_BookValue_A_FiscalYear">
+          <End Role="A_FiscalYear" Type="Self.A_FiscalYear" Multiplicity="1" />
+          <End Role="A_BookValue" Type="Self.A_BookValue" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="A_FiscalYear">
+              <PropertyRef Name="FYId" />
+            </Principal>
+            <Dependent Role="A_BookValue">
+              <PropertyRef Name="BookId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_A_GlTransactionDetails_A_GlAccount">
+          <End Role="A_GlAccount" Type="Self.A_GlAccount" Multiplicity="1" />
+          <End Role="A_GlTransactionDetails" Type="Self.A_GlTransactionDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="A_GlAccount">
+              <PropertyRef Name="A_GlAccountId" />
+            </Principal>
+            <Dependent Role="A_GlTransactionDetails">
+              <PropertyRef Name="A_GlAccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_A_GlTransactionDetails_A_GlTransaction">
+          <End Role="A_GlTransaction" Type="Self.A_GlTransaction" Multiplicity="1" />
+          <End Role="A_GlTransactionDetails" Type="Self.A_GlTransactionDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="A_GlTransaction">
+              <PropertyRef Name="A_GlTransactionId" />
+            </Principal>
+            <Dependent Role="A_GlTransactionDetails">
+              <PropertyRef Name="A_GlTransactionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Address_District">
+          <End Role="District" Type="Self.District" Multiplicity="1" />
+          <End Role="Address" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="District">
+              <PropertyRef Name="DistrictId" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="DistrictId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Address_Division">
+          <End Role="Division" Type="Self.Division" Multiplicity="1" />
+          <End Role="Address" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Division">
+              <PropertyRef Name="DivisionId" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="DivisionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Address_Thana">
+          <End Role="Thana" Type="Self.Thana" Multiplicity="1" />
+          <End Role="Address" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Thana">
+              <PropertyRef Name="ThanaId" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="ThanaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_User_Id">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_District_Division">
+          <End Role="Division" Type="Self.Division" Multiplicity="1" />
+          <End Role="District" Type="Self.District" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Division">
+              <PropertyRef Name="DivisionId" />
+            </Principal>
+            <Dependent Role="District">
+              <PropertyRef Name="DivisionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Supplier_District">
+          <End Role="District" Type="Self.District" Multiplicity="0..1" />
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="District">
+              <PropertyRef Name="DistrictId" />
+            </Principal>
+            <Dependent Role="Supplier">
+              <PropertyRef Name="DistrictId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SupplierInvestment_Supplier">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+          <End Role="SupplierInvestment" Type="Self.SupplierInvestment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="SupplierId" />
+            </Principal>
+            <Dependent Role="SupplierInvestment">
+              <PropertyRef Name="SupplierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Thana_DistrictId">
+          <End Role="District" Type="Self.District" Multiplicity="1" />
+          <End Role="Thana" Type="Self.Thana" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="District">
+              <PropertyRef Name="DistrictId" />
+            </Principal>
+            <Dependent Role="Thana">
+              <PropertyRef Name="DistrictId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fnGetDateString" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="nvarchar">
+          <Parameter Name="Param" Type="int" Mode="In" />
+          <Parameter Name="code" Type="char" Mode="In" />
+        </Function>
+        <Function Name="sp_BalanceSheet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_SupplierWiseInvestment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="supplierId" Type="int" Mode="In" />
+          <Parameter Name="StartDate" Type="datetime" Mode="In" />
+          <Parameter Name="EndDate" Type="date" Mode="In" />
+        </Function>
+        <Function Name="spCashOrBankPayment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="StartDate" Type="datetime" Mode="In" />
+          <Parameter Name="EndDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="spCashReceiveStatement" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="StartDate" Type="datetime" Mode="In" />
+          <Parameter Name="EndDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="spCodeWiseGeneralLedger" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="date" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="spDateWiseTransaction" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="spGeneralLedgerReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spGl_DateWiseTransaction" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spTrialBalance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="date" Type="datetime" Mode="In" />
+        </Function>
+        <EntityContainer Name="MHTradeModelStoreContainer">
+          <EntitySet Name="A_BookValue" EntityType="Self.A_BookValue" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="A_CostCenter" EntityType="Self.A_CostCenter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="A_FiscalYear" EntityType="Self.A_FiscalYear" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="A_GlAccount" EntityType="Self.A_GlAccount" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="A_GlTransaction" EntityType="Self.A_GlTransaction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="A_GlTransactionDetails" EntityType="Self.A_GlTransactionDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CompanyInfo" EntityType="Self.CompanyInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DataConfig" EntityType="Self.DataConfig" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Designation" EntityType="Self.Designation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="District" EntityType="Self.District" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Division" EntityType="Self.Division" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SupplierInvestment" EntityType="Self.SupplierInvestment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Thana" EntityType="Self.Thana" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_A_BookValue_A_FiscalYear" Association="Self.FK_A_BookValue_A_FiscalYear">
+            <End Role="A_FiscalYear" EntitySet="A_FiscalYear" />
+            <End Role="A_BookValue" EntitySet="A_BookValue" />
+          </AssociationSet>
+          <AssociationSet Name="FK_A_GlTransactionDetails_A_GlAccount" Association="Self.FK_A_GlTransactionDetails_A_GlAccount">
+            <End Role="A_GlAccount" EntitySet="A_GlAccount" />
+            <End Role="A_GlTransactionDetails" EntitySet="A_GlTransactionDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_A_GlTransactionDetails_A_GlTransaction" Association="Self.FK_A_GlTransactionDetails_A_GlTransaction">
+            <End Role="A_GlTransaction" EntitySet="A_GlTransaction" />
+            <End Role="A_GlTransactionDetails" EntitySet="A_GlTransactionDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Address_District" Association="Self.FK_Address_District">
+            <End Role="District" EntitySet="District" />
+            <End Role="Address" EntitySet="Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Address_Division" Association="Self.FK_Address_Division">
+            <End Role="Division" EntitySet="Division" />
+            <End Role="Address" EntitySet="Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Address_Thana" Association="Self.FK_Address_Thana">
+            <End Role="Thana" EntitySet="Thana" />
+            <End Role="Address" EntitySet="Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_User_Id" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_User_Id">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_District_Division" Association="Self.FK_District_Division">
+            <End Role="Division" EntitySet="Division" />
+            <End Role="District" EntitySet="District" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Supplier_District" Association="Self.FK_Supplier_District">
+            <End Role="District" EntitySet="District" />
+            <End Role="Supplier" EntitySet="Supplier" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SupplierInvestment_Supplier" Association="Self.FK_SupplierInvestment_Supplier">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="SupplierInvestment" EntitySet="SupplierInvestment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Thana_DistrictId" Association="Self.FK_Thana_DistrictId">
+            <End Role="District" EntitySet="District" />
+            <End Role="Thana" EntitySet="Thana" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MHTradeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="A_BookValue">
+          <Key>
+            <PropertyRef Name="BookId" />
+          </Key>
+          <Property Name="BookId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FYId" Type="Int32" Nullable="false" />
+          <Property Name="A_GlAccountId" Type="Int32" Nullable="false" />
+          <Property Name="OpeningBalance" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ClosingBalance" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="A_FiscalYear" Relationship="Self.FK_A_BookValue_A_FiscalYear" FromRole="A_BookValue" ToRole="A_FiscalYear" />
+        </EntityType>
+        <EntityType Name="A_CostCenter">
+          <Key>
+            <PropertyRef Name="CostCenterAutoId" />
+          </Key>
+          <Property Name="CostCenterAutoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="A_CostCenterId" Type="Int32" Nullable="false" />
+          <Property Name="DebitAccount" Type="Int32" Nullable="false" />
+          <Property Name="CreditAccount" Type="Int32" Nullable="false" />
+          <Property Name="CostCenterName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="Particular" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="A_FiscalYear">
+          <Key>
+            <PropertyRef Name="FYId" />
+          </Key>
+          <Property Name="FYId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FiscalYear" Type="String" MaxLength="9" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FromDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ToDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsBooked" Type="Boolean" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="BookedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="A_BookValue" Relationship="Self.FK_A_BookValue_A_FiscalYear" FromRole="A_FiscalYear" ToRole="A_BookValue" />
+        </EntityType>
+        <EntityType Name="A_GlAccount">
+          <Key>
+            <PropertyRef Name="A_GlAccountId" />
+          </Key>
+          <Property Name="A_GlAccountId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParentId" Type="Int32" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TransactionAllowed" Type="Boolean" Nullable="false" />
+          <Property Name="AccountType" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="BalanceType" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="0" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="A_GlTransactionDetails" Relationship="Self.FK_A_GlTransactionDetails_A_GlAccount" FromRole="A_GlAccount" ToRole="A_GlTransactionDetails" />
+        </EntityType>
+        <EntityType Name="A_GlTransaction">
+          <Key>
+            <PropertyRef Name="A_GlTransactionId" />
+          </Key>
+          <Property Name="A_GlTransactionId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TransactionDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EntryMethod" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="A_CostCenterId" Type="Int32" />
+          <Property Name="VoucharNumber" Type="Int32" />
+          <NavigationProperty Name="A_GlTransactionDetails" Relationship="Self.FK_A_GlTransactionDetails_A_GlTransaction" FromRole="A_GlTransaction" ToRole="A_GlTransactionDetails" />
+        </EntityType>
+        <EntityType Name="A_GlTransactionDetails">
+          <Key>
+            <PropertyRef Name="A_GlTransactionDetailsId" />
+          </Key>
+          <Property Name="A_GlTransactionDetailsId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="A_GlAccountId" Type="Int32" Nullable="false" />
+          <Property Name="A_GlTransactionId" Type="Int64" Nullable="false" />
+          <Property Name="DebitAmount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="CreditAmount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="TransactionDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ChequeNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Particular" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="A_GlAccount" Relationship="Self.FK_A_GlTransactionDetails_A_GlAccount" FromRole="A_GlTransactionDetails" ToRole="A_GlAccount" />
+          <NavigationProperty Name="A_GlTransaction" Relationship="Self.FK_A_GlTransactionDetails_A_GlTransaction" FromRole="A_GlTransactionDetails" ToRole="A_GlTransaction" />
+        </EntityType>
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="AddressId" />
+          </Key>
+          <Property Name="AddressId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DivisionId" Type="Int32" Nullable="false" />
+          <Property Name="DistrictId" Type="Int32" Nullable="false" />
+          <Property Name="ThanaId" Type="Int32" Nullable="false" />
+          <Property Name="Road" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Area" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Line1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Line2" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="District" Relationship="Self.FK_Address_District" FromRole="Address" ToRole="District" />
+          <NavigationProperty Name="Division" Relationship="Self.FK_Address_Division" FromRole="Address" ToRole="Division" />
+          <NavigationProperty Name="Thana" Relationship="Self.FK_Address_Thana" FromRole="Address" ToRole="Thana" />
+        </EntityType>
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="User_Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_User_Id" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogin">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+          </Key>
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Discriminator" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_User_Id" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <EntityType Name="CompanyInfo">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Name="CompanyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AddressId" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Logo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Slogan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DataConfig">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Key" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Value" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Designation">
+          <Key>
+            <PropertyRef Name="DesignationId" />
+          </Key>
+          <Property Name="DesignationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Desig_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="District">
+          <Key>
+            <PropertyRef Name="DistrictId" />
+          </Key>
+          <Property Name="DistrictId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DivisionId" Type="Int32" Nullable="false" />
+          <Property Name="DistrictName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DistrictNameInBangla" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Addresses" Relationship="Self.FK_Address_District" FromRole="District" ToRole="Address" />
+          <NavigationProperty Name="Division" Relationship="Self.FK_District_Division" FromRole="District" ToRole="Division" />
+          <NavigationProperty Name="Suppliers" Relationship="Self.FK_Supplier_District" FromRole="District" ToRole="Supplier" />
+          <NavigationProperty Name="Thanas" Relationship="Self.FK_Thana_DistrictId" FromRole="District" ToRole="Thana" />
+        </EntityType>
+        <EntityType Name="Division">
+          <Key>
+            <PropertyRef Name="DivisionId" />
+          </Key>
+          <Property Name="DivisionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DivisionName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DivisionNameInBangla" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Addresses" Relationship="Self.FK_Address_Division" FromRole="Division" ToRole="Address" />
+          <NavigationProperty Name="Districts" Relationship="Self.FK_District_Division" FromRole="Division" ToRole="District" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="SupplierId" />
+          </Key>
+          <Property Name="SupplierId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SupplierName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MobileNo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DistrictId" Type="Int32" />
+          <Property Name="Note" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="District" Relationship="Self.FK_Supplier_District" FromRole="Supplier" ToRole="District" />
+          <NavigationProperty Name="SupplierInvestments" Relationship="Self.FK_SupplierInvestment_Supplier" FromRole="Supplier" ToRole="SupplierInvestment" />
+        </EntityType>
+        <EntityType Name="SupplierInvestment">
+          <Key>
+            <PropertyRef Name="SupplierInvestmentId" />
+          </Key>
+          <Property Name="SupplierInvestmentId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SupplierId" Type="Int32" Nullable="false" />
+          <Property Name="Reason" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="MemberName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MemberNid" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TransactionDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="A_GlTransactionId" Type="Int64" />
+          <Property Name="ProcessStatus" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="Particular" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Supplier" Relationship="Self.FK_SupplierInvestment_Supplier" FromRole="SupplierInvestment" ToRole="Supplier" />
+        </EntityType>
+        <EntityType Name="Thana">
+          <Key>
+            <PropertyRef Name="ThanaId" />
+          </Key>
+          <Property Name="ThanaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DistrictId" Type="Int32" Nullable="false" />
+          <Property Name="ThanaName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ThanaNameInBangla" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Addresses" Relationship="Self.FK_Address_Thana" FromRole="Thana" ToRole="Address" />
+          <NavigationProperty Name="District" Relationship="Self.FK_Thana_DistrictId" FromRole="Thana" ToRole="District" />
+        </EntityType>
+        <Association Name="FK_A_BookValue_A_FiscalYear">
+          <End Role="A_FiscalYear" Type="Self.A_FiscalYear" Multiplicity="1" />
+          <End Role="A_BookValue" Type="Self.A_BookValue" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="A_FiscalYear">
+              <PropertyRef Name="FYId" />
+            </Principal>
+            <Dependent Role="A_BookValue">
+              <PropertyRef Name="BookId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_A_GlTransactionDetails_A_GlAccount">
+          <End Role="A_GlAccount" Type="Self.A_GlAccount" Multiplicity="1" />
+          <End Role="A_GlTransactionDetails" Type="Self.A_GlTransactionDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="A_GlAccount">
+              <PropertyRef Name="A_GlAccountId" />
+            </Principal>
+            <Dependent Role="A_GlTransactionDetails">
+              <PropertyRef Name="A_GlAccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_A_GlTransactionDetails_A_GlTransaction">
+          <End Role="A_GlTransaction" Type="Self.A_GlTransaction" Multiplicity="1" />
+          <End Role="A_GlTransactionDetails" Type="Self.A_GlTransactionDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="A_GlTransaction">
+              <PropertyRef Name="A_GlTransactionId" />
+            </Principal>
+            <Dependent Role="A_GlTransactionDetails">
+              <PropertyRef Name="A_GlTransactionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Address_District">
+          <End Role="District" Type="Self.District" Multiplicity="1" />
+          <End Role="Address" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="District">
+              <PropertyRef Name="DistrictId" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="DistrictId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Address_Division">
+          <End Role="Division" Type="Self.Division" Multiplicity="1" />
+          <End Role="Address" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Division">
+              <PropertyRef Name="DivisionId" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="DivisionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Address_Thana">
+          <End Role="Thana" Type="Self.Thana" Multiplicity="1" />
+          <End Role="Address" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Thana">
+              <PropertyRef Name="ThanaId" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="ThanaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_User_Id">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_District_Division">
+          <End Role="Division" Type="Self.Division" Multiplicity="1" />
+          <End Role="District" Type="Self.District" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Division">
+              <PropertyRef Name="DivisionId" />
+            </Principal>
+            <Dependent Role="District">
+              <PropertyRef Name="DivisionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Supplier_District">
+          <End Role="District" Type="Self.District" Multiplicity="0..1" />
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="District">
+              <PropertyRef Name="DistrictId" />
+            </Principal>
+            <Dependent Role="Supplier">
+              <PropertyRef Name="DistrictId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Thana_DistrictId">
+          <End Role="District" Type="Self.District" Multiplicity="1" />
+          <End Role="Thana" Type="Self.Thana" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="District">
+              <PropertyRef Name="DistrictId" />
+            </Principal>
+            <Dependent Role="Thana">
+              <PropertyRef Name="DistrictId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SupplierInvestment_Supplier">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+          <End Role="SupplierInvestment" Type="Self.SupplierInvestment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="SupplierId" />
+            </Principal>
+            <Dependent Role="SupplierInvestment">
+              <PropertyRef Name="SupplierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="A_BookValue" EntityType="Self.A_BookValue" />
+          <EntitySet Name="A_CostCenter" EntityType="Self.A_CostCenter" />
+          <EntitySet Name="A_FiscalYear" EntityType="Self.A_FiscalYear" />
+          <EntitySet Name="A_GlAccount" EntityType="Self.A_GlAccount" />
+          <EntitySet Name="A_GlTransaction" EntityType="Self.A_GlTransaction" />
+          <EntitySet Name="A_GlTransactionDetails" EntityType="Self.A_GlTransactionDetails" />
+          <EntitySet Name="Addresses" EntityType="Self.Address" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+          <EntitySet Name="CompanyInfoes" EntityType="Self.CompanyInfo" />
+          <EntitySet Name="DataConfigs" EntityType="Self.DataConfig" />
+          <EntitySet Name="Designations" EntityType="Self.Designation" />
+          <EntitySet Name="Districts" EntityType="Self.District" />
+          <EntitySet Name="Divisions" EntityType="Self.Division" />
+          <EntitySet Name="Suppliers" EntityType="Self.Supplier" />
+          <EntitySet Name="SupplierInvestments" EntityType="Self.SupplierInvestment" />
+          <EntitySet Name="Thanas" EntityType="Self.Thana" />
+          <AssociationSet Name="FK_A_BookValue_A_FiscalYear" Association="Self.FK_A_BookValue_A_FiscalYear">
+            <End Role="A_FiscalYear" EntitySet="A_FiscalYear" />
+            <End Role="A_BookValue" EntitySet="A_BookValue" />
+          </AssociationSet>
+          <AssociationSet Name="FK_A_GlTransactionDetails_A_GlAccount" Association="Self.FK_A_GlTransactionDetails_A_GlAccount">
+            <End Role="A_GlAccount" EntitySet="A_GlAccount" />
+            <End Role="A_GlTransactionDetails" EntitySet="A_GlTransactionDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_A_GlTransactionDetails_A_GlTransaction" Association="Self.FK_A_GlTransactionDetails_A_GlTransaction">
+            <End Role="A_GlTransaction" EntitySet="A_GlTransaction" />
+            <End Role="A_GlTransactionDetails" EntitySet="A_GlTransactionDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Address_District" Association="Self.FK_Address_District">
+            <End Role="District" EntitySet="Districts" />
+            <End Role="Address" EntitySet="Addresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Address_Division" Association="Self.FK_Address_Division">
+            <End Role="Division" EntitySet="Divisions" />
+            <End Role="Address" EntitySet="Addresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Address_Thana" Association="Self.FK_Address_Thana">
+            <End Role="Thana" EntitySet="Thanas" />
+            <End Role="Address" EntitySet="Addresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_User_Id" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_User_Id">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_District_Division" Association="Self.FK_District_Division">
+            <End Role="Division" EntitySet="Divisions" />
+            <End Role="District" EntitySet="Districts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Supplier_District" Association="Self.FK_Supplier_District">
+            <End Role="District" EntitySet="Districts" />
+            <End Role="Supplier" EntitySet="Suppliers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Thana_DistrictId" Association="Self.FK_Thana_DistrictId">
+            <End Role="District" EntitySet="Districts" />
+            <End Role="Thana" EntitySet="Thanas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SupplierInvestment_Supplier" Association="Self.FK_SupplierInvestment_Supplier">
+            <End Role="Supplier" EntitySet="Suppliers" />
+            <End Role="SupplierInvestment" EntitySet="SupplierInvestments" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <FunctionImport Name="sp_BalanceSheet" ReturnType="Collection(MHTradeModel.sp_BalanceSheet_Result)" />
+          <FunctionImport Name="sp_SupplierWiseInvestment" ReturnType="Collection(MHTradeModel.sp_SupplierWiseInvestment_Result)">
+            <Parameter Name="supplierId" Mode="In" Type="Int32" />
+            <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+            <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="spCashOrBankPayment" ReturnType="Collection(MHTradeModel.spCashOrBankPayment_Result)">
+            <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+            <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="spCashReceiveStatement">
+            <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+            <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="spCodeWiseGeneralLedger" ReturnType="Collection(MHTradeModel.spCodeWiseGeneralLedger_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="spDateWiseTransaction" ReturnType="Collection(MHTradeModel.spDateWiseTransaction_Result)">
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="spGeneralLedgerReport" ReturnType="Collection(MHTradeModel.spGeneralLedgerReport_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spGl_DateWiseTransaction" ReturnType="Collection(MHTradeModel.spGl_DateWiseTransaction_Result)">
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spTrialBalance" ReturnType="Collection(MHTradeModel.spTrialBalance_Result)">
+            <Parameter Name="date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="sp_BalanceSheet_Result">
+          <Property Type="Int64" Name="A_GlTransactionDetailsId" Nullable="false" />
+          <Property Type="Int32" Name="A_GlAccountId" Nullable="false" />
+          <Property Type="Int64" Name="A_GlTransactionId" Nullable="false" />
+          <Property Type="Decimal" Name="DebitAmount" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="CreditAmount" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="DateTime" Name="TransactionDate" Nullable="false" Precision="23" />
+          <Property Type="String" Name="ChequeNumber" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Particular" Nullable="true" MaxLength="50" />
+          <Property Type="Int64" Name="A_GlTransactionId1" Nullable="false" />
+          <Property Type="DateTime" Name="TransactionDate1" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="EntryMethod" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="A_CostCenterId" Nullable="true" />
+          <Property Type="Int32" Name="VoucharNumber" Nullable="true" />
+          <Property Type="Int32" Name="A_GlAccountId1" Nullable="false" />
+          <Property Type="Int32" Name="ParentId" Nullable="true" />
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+          <Property Type="Boolean" Name="TransactionAllowed" Nullable="false" />
+          <Property Type="String" Name="AccountType" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="BalanceType" Nullable="true" MaxLength="2" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="UpdatedDate" Nullable="true" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_SupplierWiseInvestment_Result">
+          <Property Type="String" Name="Supplier" Nullable="true" MaxLength="787" />
+          <Property Type="String" Name="Reason" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="MemberName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="MemberNid" Nullable="true" MaxLength="100" />
+          <Property Type="Decimal" Name="Amount" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="DateTime" Name="TransactionDate" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="spCashOrBankPayment_Result">
+          <Property Type="Int64" Name="A_GlTransactionId" Nullable="false" />
+          <Property Type="String" Name="AccountName" Nullable="false" MaxLength="103" />
+          <Property Type="DateTime" Name="TransactionDate" Nullable="false" Precision="23" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Particular" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="DebitAmount" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="CreditAmount" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="String" Name="ChequeNumber" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="spCodeWiseGeneralLedger_Result">
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="101" />
+          <Property Type="Decimal" Name="Debit" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="Credit" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="spDateWiseTransaction_Result">
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+          <Property Type="Decimal" Name="Debit" Nullable="false" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="Credit" Nullable="false" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="spGeneralLedgerReport_Result">
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+          <Property Type="Decimal" Name="Debit" Nullable="false" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="Credit" Nullable="false" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="spGl_DateWiseTransaction_Result">
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+          <Property Type="Decimal" Name="Debit" Nullable="false" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="Credit" Nullable="false" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="spTrialBalance_Result">
+          <Property Type="String" Name="NAME" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CODE" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="OpeningBalance" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="DebitAmount" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="CreditAmount" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="ClosingBalance" Nullable="false" Precision="18" Scale="2" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MHTradeModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="A_BookValue">
+            <EntityTypeMapping TypeName="MHTradeModel.A_BookValue">
+              <MappingFragment StoreEntitySet="A_BookValue">
+                <ScalarProperty Name="BookId" ColumnName="BookId" />
+                <ScalarProperty Name="FYId" ColumnName="FYId" />
+                <ScalarProperty Name="A_GlAccountId" ColumnName="A_GlAccountId" />
+                <ScalarProperty Name="OpeningBalance" ColumnName="OpeningBalance" />
+                <ScalarProperty Name="ClosingBalance" ColumnName="ClosingBalance" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="A_CostCenter">
+            <EntityTypeMapping TypeName="MHTradeModel.A_CostCenter">
+              <MappingFragment StoreEntitySet="A_CostCenter">
+                <ScalarProperty Name="CostCenterAutoId" ColumnName="CostCenterAutoId" />
+                <ScalarProperty Name="A_CostCenterId" ColumnName="A_CostCenterId" />
+                <ScalarProperty Name="DebitAccount" ColumnName="DebitAccount" />
+                <ScalarProperty Name="CreditAccount" ColumnName="CreditAccount" />
+                <ScalarProperty Name="CostCenterName" ColumnName="CostCenterName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Particular" ColumnName="Particular" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="A_FiscalYear">
+            <EntityTypeMapping TypeName="MHTradeModel.A_FiscalYear">
+              <MappingFragment StoreEntitySet="A_FiscalYear">
+                <ScalarProperty Name="FYId" ColumnName="FYId" />
+                <ScalarProperty Name="FiscalYear" ColumnName="FiscalYear" />
+                <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="IsBooked" ColumnName="IsBooked" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="BookedDate" ColumnName="BookedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="A_GlAccount">
+            <EntityTypeMapping TypeName="MHTradeModel.A_GlAccount">
+              <MappingFragment StoreEntitySet="A_GlAccount">
+                <ScalarProperty Name="A_GlAccountId" ColumnName="A_GlAccountId" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="TransactionAllowed" ColumnName="TransactionAllowed" />
+                <ScalarProperty Name="AccountType" ColumnName="AccountType" />
+                <ScalarProperty Name="BalanceType" ColumnName="BalanceType" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="A_GlTransaction">
+            <EntityTypeMapping TypeName="MHTradeModel.A_GlTransaction">
+              <MappingFragment StoreEntitySet="A_GlTransaction">
+                <ScalarProperty Name="A_GlTransactionId" ColumnName="A_GlTransactionId" />
+                <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
+                <ScalarProperty Name="EntryMethod" ColumnName="EntryMethod" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="A_CostCenterId" ColumnName="A_CostCenterId" />
+                <ScalarProperty Name="VoucharNumber" ColumnName="VoucharNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="A_GlTransactionDetails">
+            <EntityTypeMapping TypeName="MHTradeModel.A_GlTransactionDetails">
+              <MappingFragment StoreEntitySet="A_GlTransactionDetails">
+                <ScalarProperty Name="A_GlTransactionDetailsId" ColumnName="A_GlTransactionDetailsId" />
+                <ScalarProperty Name="A_GlAccountId" ColumnName="A_GlAccountId" />
+                <ScalarProperty Name="A_GlTransactionId" ColumnName="A_GlTransactionId" />
+                <ScalarProperty Name="DebitAmount" ColumnName="DebitAmount" />
+                <ScalarProperty Name="CreditAmount" ColumnName="CreditAmount" />
+                <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
+                <ScalarProperty Name="ChequeNumber" ColumnName="ChequeNumber" />
+                <ScalarProperty Name="Particular" ColumnName="Particular" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Addresses">
+            <EntityTypeMapping TypeName="MHTradeModel.Address">
+              <MappingFragment StoreEntitySet="Address">
+                <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+                <ScalarProperty Name="DivisionId" ColumnName="DivisionId" />
+                <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+                <ScalarProperty Name="ThanaId" ColumnName="ThanaId" />
+                <ScalarProperty Name="Road" ColumnName="Road" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="Line1" ColumnName="Line1" />
+                <ScalarProperty Name="Line2" ColumnName="Line2" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="MHTradeModel.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="MHTradeModel.AspNetUserClaim">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+                <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="MHTradeModel.AspNetUserLogin">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="MHTradeModel.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="Discriminator" ColumnName="Discriminator" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CompanyInfoes">
+            <EntityTypeMapping TypeName="MHTradeModel.CompanyInfo">
+              <MappingFragment StoreEntitySet="CompanyInfo">
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+                <ScalarProperty Name="Slogan" ColumnName="Slogan" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DataConfigs">
+            <EntityTypeMapping TypeName="MHTradeModel.DataConfig">
+              <MappingFragment StoreEntitySet="DataConfig">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Key" ColumnName="Key" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Designations">
+            <EntityTypeMapping TypeName="MHTradeModel.Designation">
+              <MappingFragment StoreEntitySet="Designation">
+                <ScalarProperty Name="DesignationId" ColumnName="DesignationId" />
+                <ScalarProperty Name="Desig_name" ColumnName="Desig_name" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Districts">
+            <EntityTypeMapping TypeName="MHTradeModel.District">
+              <MappingFragment StoreEntitySet="District">
+                <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+                <ScalarProperty Name="DivisionId" ColumnName="DivisionId" />
+                <ScalarProperty Name="DistrictName" ColumnName="DistrictName" />
+                <ScalarProperty Name="DistrictNameInBangla" ColumnName="DistrictNameInBangla" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Divisions">
+            <EntityTypeMapping TypeName="MHTradeModel.Division">
+              <MappingFragment StoreEntitySet="Division">
+                <ScalarProperty Name="DivisionId" ColumnName="DivisionId" />
+                <ScalarProperty Name="DivisionName" ColumnName="DivisionName" />
+                <ScalarProperty Name="DivisionNameInBangla" ColumnName="DivisionNameInBangla" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Suppliers">
+            <EntityTypeMapping TypeName="MHTradeModel.Supplier">
+              <MappingFragment StoreEntitySet="Supplier">
+                <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+                <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SupplierInvestments">
+            <EntityTypeMapping TypeName="MHTradeModel.SupplierInvestment">
+              <MappingFragment StoreEntitySet="SupplierInvestment">
+                <ScalarProperty Name="SupplierInvestmentId" ColumnName="SupplierInvestmentId" />
+                <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="MemberName" ColumnName="MemberName" />
+                <ScalarProperty Name="MemberNid" ColumnName="MemberNid" />
+                <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="A_GlTransactionId" ColumnName="A_GlTransactionId" />
+                <ScalarProperty Name="ProcessStatus" ColumnName="ProcessStatus" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="Particular" ColumnName="Particular" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Thanas">
+            <EntityTypeMapping TypeName="MHTradeModel.Thana">
+              <MappingFragment StoreEntitySet="Thana">
+                <ScalarProperty Name="ThanaId" ColumnName="ThanaId" />
+                <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+                <ScalarProperty Name="ThanaName" ColumnName="ThanaName" />
+                <ScalarProperty Name="ThanaNameInBangla" ColumnName="ThanaNameInBangla" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="MHTradeModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="sp_BalanceSheet" FunctionName="MHTradeModel.Store.sp_BalanceSheet">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MHTradeModel.sp_BalanceSheet_Result">
+                <ScalarProperty Name="A_GlTransactionDetailsId" ColumnName="A_GlTransactionDetailsId" />
+                <ScalarProperty Name="A_GlAccountId" ColumnName="A_GlAccountId" />
+                <ScalarProperty Name="A_GlTransactionId" ColumnName="A_GlTransactionId" />
+                <ScalarProperty Name="DebitAmount" ColumnName="DebitAmount" />
+                <ScalarProperty Name="CreditAmount" ColumnName="CreditAmount" />
+                <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
+                <ScalarProperty Name="ChequeNumber" ColumnName="ChequeNumber" />
+                <ScalarProperty Name="Particular" ColumnName="Particular" />
+                <ScalarProperty Name="A_GlTransactionId1" ColumnName="A_GlTransactionId1" />
+                <ScalarProperty Name="TransactionDate1" ColumnName="TransactionDate1" />
+                <ScalarProperty Name="EntryMethod" ColumnName="EntryMethod" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="A_CostCenterId" ColumnName="A_CostCenterId" />
+                <ScalarProperty Name="VoucharNumber" ColumnName="VoucharNumber" />
+                <ScalarProperty Name="A_GlAccountId1" ColumnName="A_GlAccountId1" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="TransactionAllowed" ColumnName="TransactionAllowed" />
+                <ScalarProperty Name="AccountType" ColumnName="AccountType" />
+                <ScalarProperty Name="BalanceType" ColumnName="BalanceType" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_SupplierWiseInvestment" FunctionName="MHTradeModel.Store.sp_SupplierWiseInvestment">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MHTradeModel.sp_SupplierWiseInvestment_Result">
+                <ScalarProperty Name="Supplier" ColumnName="Supplier" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="MemberName" ColumnName="MemberName" />
+                <ScalarProperty Name="MemberNid" ColumnName="MemberNid" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spCashOrBankPayment" FunctionName="MHTradeModel.Store.spCashOrBankPayment">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MHTradeModel.spCashOrBankPayment_Result">
+                <ScalarProperty Name="A_GlTransactionId" ColumnName="A_GlTransactionId" />
+                <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+                <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Particular" ColumnName="Particular" />
+                <ScalarProperty Name="DebitAmount" ColumnName="DebitAmount" />
+                <ScalarProperty Name="CreditAmount" ColumnName="CreditAmount" />
+                <ScalarProperty Name="ChequeNumber" ColumnName="ChequeNumber" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spCashReceiveStatement" FunctionName="MHTradeModel.Store.spCashReceiveStatement" />
+          <FunctionImportMapping FunctionImportName="spCodeWiseGeneralLedger" FunctionName="MHTradeModel.Store.spCodeWiseGeneralLedger">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MHTradeModel.spCodeWiseGeneralLedger_Result">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Debit" ColumnName="Debit" />
+                <ScalarProperty Name="Credit" ColumnName="Credit" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spDateWiseTransaction" FunctionName="MHTradeModel.Store.spDateWiseTransaction">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MHTradeModel.spDateWiseTransaction_Result">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Debit" ColumnName="Debit" />
+                <ScalarProperty Name="Credit" ColumnName="Credit" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGeneralLedgerReport" FunctionName="MHTradeModel.Store.spGeneralLedgerReport">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MHTradeModel.spGeneralLedgerReport_Result">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Debit" ColumnName="Debit" />
+                <ScalarProperty Name="Credit" ColumnName="Credit" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spGl_DateWiseTransaction" FunctionName="MHTradeModel.Store.spGl_DateWiseTransaction">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MHTradeModel.spGl_DateWiseTransaction_Result">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Debit" ColumnName="Debit" />
+                <ScalarProperty Name="Credit" ColumnName="Credit" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spTrialBalance" FunctionName="MHTradeModel.Store.spTrialBalance">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MHTradeModel.spTrialBalance_Result">
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="CODE" ColumnName="CODE" />
+                <ScalarProperty Name="OpeningBalance" ColumnName="OpeningBalance" />
+                <ScalarProperty Name="DebitAmount" ColumnName="DebitAmount" />
+                <ScalarProperty Name="CreditAmount" ColumnName="CreditAmount" />
+                <ScalarProperty Name="ClosingBalance" ColumnName="ClosingBalance" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

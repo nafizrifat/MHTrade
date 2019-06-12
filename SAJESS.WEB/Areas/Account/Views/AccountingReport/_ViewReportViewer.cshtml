@@ -1,0 +1,82 @@
+﻿<script src="~/Content/Utility/datetimepicker.js"></script>
+<div id="selection" style="font-size: 15px;">
+    <p>Choose an option of report you want to see : </p>
+    <form id="reportSelector">
+        <label class="radio-inline">
+            <input type="radio" name="report" value="TrialBalance">Trial Balance
+        </label>
+        <label class="radio-inline">
+            <input type="radio" name="report" value="GLT">General Ledger Transaction
+        </label>
+        <label class="radio-inline">
+                <input type="radio" name="report" value="DwT">Date Wise Transaction
+            </label>
+        <label class="radio-inline">
+            <input type="radio" name="report" value="TS">Top Sheet
+        </label>
+        <label class="radio-inline">
+            <input type="radio" name="report" value="Payment">Payment Report
+        </label>
+    </form>
+</div>
+<div id="TrialBalance" class="report" style="font-size: 15px;">
+    <h2>Trial Balance Report</h2>
+    <form>
+        <label>Date</label>
+        <input id="trialbalanceDate" class="datepicker" type="datetime" placeholder="Date" />
+        <input id="btnTrialBalance" type="button" value="Show Report" />
+    </form>
+</div>
+<div id="GLT" class="report" style="font-size: 15px;">
+    <h2>Date Wise General Transaction Report</h2>
+    <form>
+        <label>A/C Head</label>
+        <select id="cmbGLTACHeads" style="width: 150px;"></select>
+        <label>Date From</label>
+        <input type="datetime" id="GLTfromDate" class="datepicker" placeholder="Date From" style="width: 150px;"/>
+        <label>Date To</label>
+        <input type="datetime" id="GLTtoDate" class="datepicker" placeholder="Date To" style="width: 150px;"/>
+        <input type="button" value="Show Report" id="btnGLTReport" style="width: 150px;"/>
+    </form>
+</div>
+
+<div id="DwT" class="report" style="font-size: 15px;">
+    <h2>Date Wise Transaction Report</h2>
+    <form>
+        <label>Date From</label>
+        <input type="datetime" id="DwTfromDate" class="datepicker" placeholder="Date From" style="width: 150px;"/>
+        <label>Date To</label>
+        <input type="datetime" id="DwTtoDate" class="datepicker" placeholder="Date To" style="width: 150px;"/>
+        <input type="button" value="Show Report" id="btnDwTReport" style="width: 150px;"/>
+    </form>
+</div>
+
+<div id="TS" class="report" style="font-size: 15px;">
+    <h2>Top Sheet</h2>
+    <div class="form-inline">
+        <select id="cmbReportType" style="width: 150px;">
+            <option value="Cash Receive report">Cash Receive report</option>
+            <option value="Cash payment report">Cash payment report</option>
+            <option value="Bank Receive report">Bank Receive report</option>
+            <option value="Bank payment report">Bank payment report</option>
+            <option value="Cash AND Bank transaction report">Cash AND Bank transaction report</option>
+        </select>
+    </div>
+    <form class="form-inline">
+        <input id="startDate" class="datepicker" type="datetime" placeholder="Date"/>
+        <input id="txtEndDateDate" class="datepicker" type="datetime" placeholder="Date"/>
+        <input id="btnShowTopSheet" type="button" class="fa fa ui-button-primary" value="Show Report"/>
+    </form>
+</div>
+<div id="Payment" class="report" style="font-size: 15px;">
+    <h2>Payment Report</h2>
+    <form>
+        <label>Date From</label>
+        <input type="datetime" id="payFromDate" class="datepicker" placeholder="Date From" style="width: 150px;" />
+        <label>Date To</label>
+        <input type="datetime" id="payToDate" class="datepicker" placeholder="Date To" style="width: 150px;" />
+        <input id="btnShowPaymentSheet" type="button" class="fa fa ui-button-primary" value="Show Report" />
+    
+        
+    </form>
+</div>

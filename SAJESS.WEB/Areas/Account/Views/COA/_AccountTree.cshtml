@@ -1,0 +1,157 @@
+﻿@using System.Activities.Statements
+@using Microsoft.Ajax.Utilities
+@model IEnumerable<SAJESS.Entities.ViewModel.A_GlAccountViewModel>
+
+@functions {
+    private static Int32 GrandParrentId { get; set; }
+    private static Int32 ParrentId { get; set; }
+    private static Int32 Child1 { get; set; }
+    private static Int32 Child2 { get; set; }
+    private static Int32 Child3 { get; set; }
+    private static Int32 Child4 { get; set; }
+    private static Int32 Child5 { get; set; }
+    private static Int32 Child6 { get; set; }
+    private static Int32 Child7 { get; set; }
+    private static Int32 Child8 { get; set; }
+    private static Int32 Child9 { get; set; }
+}
+<script src="~/Content/Utility/TreeView.js"></script>
+
+<div class="widget-body">
+
+    <div class="tree smart-form">
+        @foreach (var gpar in @Model.Where(j => j.Parent == 0 && j.Id == 0))
+        {
+            GrandParrentId = gpar.Id;
+            <ul>
+                <li>
+                    <input type="checkbox" id=@gpar.Id name="checkbox-inline">
+                    <span><i class="fa fa-lg fa-folder-open"></i> @gpar.AccountName </span>
+                    @foreach (var par in @Model.Where(i => i.Parent == GrandParrentId && i.Id>0))
+                    {
+                        ParrentId = par.Id;
+                        <ul>
+                            <li >
+                                <span>
+                                    <input type="checkbox" name="checkbox-inline" id="@par.Id">
+                                    <i></i>@par.AccountName
+                                    </span>
+                                @foreach (var child1 in @Model.Where(i => i.Parent == ParrentId))
+                                {
+                                    Child1 = child1.Id;
+                                    <ul>
+                                        <li style="display: none">
+                                            <span>
+                                                    <input type="checkbox" name="checkbox-inline" id="@child1.Id">
+                                                    <i></i>@child1.AccountName
+                                            </span>
+                                            @foreach (var child2 in @Model.Where(i => i.Parent == Child1))
+                                            {
+                                                Child2 = child2.Id;
+                                                <ul>
+                                                    <li style="display: none">
+                                                        <span>
+                                                            <input type="checkbox" name="checkbox-inline" id="@child2.Id">
+                                                            <i></i>@child2.AccountName
+                                                        </span>
+                                                        @foreach (var child3 in @Model.Where(i => i.Parent == Child2))
+                                                        {
+                                                            Child3 = child3.Id;
+                                                            <ul>
+                                                                <li style="display: none">
+                                                                    <span>
+                                                                        <input type="checkbox" name="checkbox-inline" id="@child3.Id">
+                                                                        <i></i>@child3.AccountName
+                                                                    </span>
+                                                                    @foreach (var child4 in @Model.Where(i => i.Parent == Child3))
+                                                                    {
+                                                                        Child4 = child4.Id;
+                                                                        <ul>
+                                                                            <li style="display: none">
+                                                                                <span>
+                                                                                    <input type="checkbox" name="checkbox-inline" id="@child4.Id">
+                                                                                    <i></i>@child4.AccountName
+                                                                                </span>
+                                                                                @foreach (var child5 in @Model.Where(i => i.Parent == Child4))
+                                                                                {
+                                                                                    Child5 = child5.Id;
+                                                                                    <ul>
+                                                                                        <li style="display: none">
+                                                                                            <span>
+                                                                                                <input type="checkbox" name="checkbox-inline" id="@child5.Id">
+                                                                                                <i></i>@child5.AccountName
+                                                                                            </span>
+                                                                                            @foreach (var child6 in @Model.Where(i => i.Parent == Child5))
+                                                                                            {
+                                                                                                Child6 = child6.Id;
+                                                                                                <ul>
+                                                                                                    <li style="display: none">
+                                                                                                        <span>
+                                                                                                            <input type="checkbox" name="checkbox-inline" id="@child6.Id">
+                                                                                                            <i></i>@child6.AccountName
+                                                                                                        </span>
+                                                                                                        @foreach (var child7 in @Model.Where(i => i.Parent == Child6))
+                                                                                                        {
+                                                                                                            Child7 = child7.Id;
+                                                                                                            <ul>
+                                                                                                                <li style="display: none">
+                                                                                                                    <span>
+                                                                                                                        <input type="checkbox" name="checkbox-inline" id="@child7.Id">
+                                                                                                                        <i></i>@child7.AccountName
+                                                                                                                    </span>
+                                                                                                                    @foreach (var child8 in @Model.Where(i => i.Parent == Child7))
+                                                                                                                    {
+                                                                                                                        Child8 = child8.Id;
+                                                                                                                        <ul>
+                                                                                                                            <li style="display: none">
+                                                                                                                                <span>
+                                                                                                                                    <input type="checkbox" name="checkbox-inline" id="@child8.Id">
+                                                                                                                                    <i></i>@child8.AccountName
+                                                                                                                                </span>
+                                                                                                                                @foreach (var child9 in @Model.Where(i => i.Parent == Child8))
+                                                                                                                                {
+                                                                                                                                    Child9 = child9.Id;
+                                                                                                                                    <ul>
+                                                                                                                                        <li style="display: none">
+                                                                                                                                            <span>
+                                                                                                                                                <input type="checkbox" name="checkbox-inline" id="@child9.Id">
+                                                                                                                                                <i></i>@child9.AccountName
+                                                                                                                                            </span>
+                                                                                                                                        </li>
+                                                                                                                                    </ul>
+                                                                                                                                }
+                                                                                                                            </li>
+                                                                                                                        </ul>
+                                                                                                                    }
+                                                                                                                </li>
+                                                                                                            </ul>
+                                                                                                        }
+                                                                                                    </li>
+                                                                                                </ul>
+                                                                                            }
+                                                                                        </li>
+                                                                                    </ul>
+                                                                                }
+                                                                            </li>
+                                                                        </ul>
+                                                                    }
+                                                                </li>
+                                                            </ul>
+                                                        }
+                                                    </li>
+                                                </ul>
+
+                                            }
+                                        </li>
+                                    </ul>
+                                }
+                            </li>
+                        </ul>
+                    }
+
+                </li>
+
+            </ul>
+        }
+    </div>
+</div>
